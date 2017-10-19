@@ -3,8 +3,15 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+import { Enviar } from '../pages/enviar/enviar';
+import { Escolher } from '../pages/escolher/escolher';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
+import { Login } from '../pages/login/login';
+import { Manual } from '../pages/manual/manual';
+import { Politica } from '../pages/politica/politica';
+import { Alterar } from '../pages/senha/alterar/alterar';
+import { Recuperar } from '../pages/senha/recuperar/recuperar';
 
 @Component({
   templateUrl: 'app.html'
@@ -14,7 +21,8 @@ export class MyApp {
 
   rootPage: any = HomePage;
 
-  pages: Array<{title: string, component: any}>;
+  pages: Array<{ title: string, component: any }>;
+  prof: Array<{ title: string, component: any }>;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
@@ -22,7 +30,16 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage },
-      { title: 'List', component: ListPage }
+      { title: 'List', component: ListPage },
+      { title: 'Escolher Disciplinas', component: Escolher },
+      { title: 'Manual de Usuário', component: Manual },
+      { title: 'Política de Uso', component: Politica }
+    ];
+    this.prof = [
+      { title: 'Enviar aviso', component: Enviar },
+      { title: 'Alterar senha', component: Alterar },
+      { title: 'Esqueci minha senha', component: Recuperar },
+      { title: 'Login', component: Login }
     ];
 
   }
