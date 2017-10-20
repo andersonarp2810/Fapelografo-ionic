@@ -2,22 +2,22 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
 /**
- * Generated class for the Enviar page.
+ * Generated class for the AreaProfessor page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
 @Component({
-  selector: 'page-enviar',
-  templateUrl: 'enviar.html',
+  selector: 'page-area-professor',
+  templateUrl: 'area-professor.html',
 })
-export class Enviar {
+export class AreaProfessor {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad Enviar');
+    console.log('ionViewDidLoad AreaProfessor');
   }
 
 }
