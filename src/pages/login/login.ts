@@ -28,8 +28,12 @@ export class Login {
   login() {
     this.botaoDesativado = true;
     this.botaotxt = "Conectando...";
-    this.tostador.tostar(SHA2.SHA2_256("batata"), 2000);
-    this.botaotxt = "Entrar";
+
+    setTimeout(() => {
+      this.botaoDesativado = false;
+      this.botaotxt = "Entrar";
+      this.tostador.tostar(SHA2.SHA2_256("batata"), 2000);
+    }, 3000);
   }
 
   ionViewDidLoad() {

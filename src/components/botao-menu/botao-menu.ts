@@ -13,7 +13,6 @@ import { Component } from '@angular/core';
 export class BotaoMenu {
 
   constructor() {
-    console.log('Hello BotaoMenu Directive');
   }
 
 }

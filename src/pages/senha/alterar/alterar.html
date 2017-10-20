@@ -7,6 +7,7 @@
 <ion-header>
 
   <ion-navbar>
+    <botao-menu></botao-menu>
     <ion-title>Alterar Senha</ion-title>
   </ion-navbar>
 
@@ -14,5 +15,22 @@
 
 
 <ion-content padding>
+
+  <form name="formu" id="formu" (ngSubmit)="enviar()" #senhaForm="ngForm">
+    <label for="anti">Senha Antiga:</label>
+    <input id="anti" name="anti" [(ngModel)]="antiga" required>
+    <br>
+    <label for="nova">Nova Senha:</label>
+    <input id="nova" name="nova" [(ngModel)]="nova" required>
+    <br>
+    <label for="confirma">Confirmar Nova Senha</label>
+    <input id="confirma" name="confirma" [(ngModel)]="confirma" required pattern="{{nova}}" #conf="ngModel">
+
+    <div *ngIf="conf.errors">
+      Pattern
+    </div>
+
+    <button type="submit">Enviar</button>
+  </form>
 
 </ion-content>
