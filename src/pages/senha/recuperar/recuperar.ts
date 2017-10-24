@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { Tostador } from '../../../providers/tostador';
 /**
  * Generated class for the Recuperar page.
  *
@@ -9,10 +10,28 @@ import { NavController, NavParams } from 'ionic-angular';
 @Component({
   selector: 'page-recuperar',
   templateUrl: 'recuperar.html',
+  providers: [Tostador]
 })
 export class Recuperar {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  botaotxt: string = "Enviar";
+  botaovale: boolean = true;
+  imei: string;
+  @ViewChild('recuperarForm') recuperarForm;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public tostador: Tostador) {
+  }
+
+  recuperar() {
+    this.botaotxt = "Enviando";
+    this.botaovale = false;
+
+    setTimeout(() => {
+      this.tostador.tostar("Alguma coisa", 1000);
+      this.botaotxt = "Enviar";
+      this.botaovale = true;
+    }, 1000);
+
   }
 
   ionViewDidLoad() {

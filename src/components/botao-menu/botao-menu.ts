@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 
 /**
  * Generated class for the BotaoMenu directive.
@@ -11,8 +11,5 @@ import { Component, Input } from '@angular/core';
   templateUrl: 'botao-menu.html'
 })
 export class BotaoMenu {
-
-
-  @Input() titulo: string;
 
 }

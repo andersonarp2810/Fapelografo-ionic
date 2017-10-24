@@ -7,12 +7,21 @@
 <ion-header>
 
   <ion-navbar>
-    <botao-menu titulo="Recuperar Senha" ></botao-menu>
+    <botao-menu>Recuperar Senha</botao-menu>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+
+  <form name="formu" id="formu" #recuperarForm="ngForm" (ngSubmit)="recuperar()">
+    <ion-label stacked>E-mail:</ion-label>
+    <ion-input type="email" id="email" name="email" [(ngModel)]="imei" required email></ion-input>
+
+    <ion-buttons text-center>
+      <button type="submit" ion-button round [outline]="!recuperarForm.valid" [disabled]="!recuperarForm.valid || !botaovale">{{botaotxt}}</button>
+    </ion-buttons>
+  </form>
 
 </ion-content>

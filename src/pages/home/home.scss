@@ -26,8 +26,29 @@ ion-row{
 ion-col{
 	padding: 16px;
 	border: solid 1px #DDD;
-	background-color: darkslategrey;
 	color: #FFF;
 	border-radius: 3px;
 	margin: 5px;
+}
+
+.um{
+	ion-col{
+		background-color: darkslategrey;
+	}
+}
+
+.dois{
+	ion-col{
+		background-color: darkolivegreen;
+	}
+}
+
+#c2{
+	//border-style: ridge;
+	//border-color: darkolivegreen;
+	width: fit-content;
+	color: white;
+	background-color: darkolivegreen;
+	padding: 5px;
+	margin-bottom: 0px;
 }
