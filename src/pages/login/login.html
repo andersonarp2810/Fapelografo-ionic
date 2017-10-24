@@ -7,8 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <botao-menu></botao-menu>
-    <ion-title>Login</ion-title>
+    <botao-menu titulo="Login"></botao-menu>
   </ion-navbar>
 
 </ion-header>
@@ -16,11 +15,11 @@
 
 <ion-content padding>
 
-  <form name="formu">
-    <label>Usuário:</label>
+  <form name="formu" id="formu">
+    <ion-label for="user">Usuário:</ion-label>
     <ion-input name="user" id="user" type="text" [(ngModel)]="user" required></ion-input>
     <br>
-    <label>Senha:</label>
+    <ion-label for="senha">Senha:</ion-label>
     <ion-input name="senha" id="senha" type="password" [(ngModel)]="senha" required></ion-input>
   </form>
   <div padding>

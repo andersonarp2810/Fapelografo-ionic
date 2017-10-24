@@ -1,26 +1,32 @@
 page-home {
 
 }
-
-
-scroll-content{
-	background-color: rgb(41, 221, 171);
-}
-
-ion-scroll{
+.listahorizontal{
     white-space: nowrap;
-    height: 10px;
-    width: 100000px;
+    height: 20vh;
+	width: 100vw;
 }
 
-ion-scroll.item{
-	height: 100%;
+//.container-class {
+    ::-webkit-scrollbar {
+                        display: none !important;
+                    }
+//}
+
+.listahorizontal{
+	.scroll-content {
+		padding: 0px !important;
+	}
+}
+
+ion-row{
+	overflow-x: auto;
 }
 
 ion-col{
 	padding: 16px;
 	border: solid 1px #DDD;
-	background-color: rgb(221, 41, 91);
+	background-color: darkslategrey;
 	color: #FFF;
 	border-radius: 3px;
 	margin: 5px;

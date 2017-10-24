@@ -7,6 +7,7 @@ import { Escolher } from '../pages/escolher/escolher';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { Manual } from '../pages/manual/manual';
+import { Pesquisa } from '../pages/pesquisa/pesquisa';
 import { Politica } from '../pages/politica/politica';
 
 import { Alterar } from '../pages/senha/alterar/alterar';
@@ -34,6 +35,7 @@ export class MyApp {
       { title: 'Home', component: HomePage },
       { title: 'List', component: ListPage },
       { title: 'Escolher Disciplinas', component: Escolher },
+      { title: 'Pesquisa e Filtros', component: Pesquisa },
       { title: 'Área do Professor', component: AreaProfessor },
       { title: 'Manual de Usuário', component: Manual },
       { title: 'Política de Uso', component: Politica }

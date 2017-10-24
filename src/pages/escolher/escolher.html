@@ -7,13 +7,28 @@
 <ion-header>
 
   <ion-navbar>
-    <botao-menu></botao-menu>
-    <ion-title>Escolher</ion-title>
+    <botao-menu titulo="Escolher Disciplinas"></botao-menu>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+
+  <ion-list>
+
+    <ion-item>
+      <ion-label>Pepperoni</ion-label>
+      <ion-checkbox [(ngModel)]="op1"></ion-checkbox>
+    </ion-item>
+
+    <ion-item>
+        <ion-label>Pepperoni</ion-label>
+        <ion-checkbox [(ngModel)]="op1"></ion-checkbox>
+      </ion-item>
+
+  </ion-list>
+
+  {{op1}}
 
 </ion-content>

@@ -2,24 +2,22 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
 /**
- * Generated class for the Escolher page.
+ * Generated class for the Detalhes page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
 @Component({
-  selector: 'page-escolher',
-  templateUrl: 'escolher.html',
+  selector: 'page-detalhes',
+  templateUrl: 'detalhes.html',
 })
-export class Escolher {
-
-  op1 = true;
+export class Detalhes {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad Escolher');
+    console.log('ionViewDidLoad Detalhes');
   }
 
 }

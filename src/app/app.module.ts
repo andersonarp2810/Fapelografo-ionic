@@ -4,10 +4,12 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
 
+import { Detalhes } from '../pages/detalhes/detalhes';
 import { Escolher } from '../pages/escolher/escolher';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { Manual } from '../pages/manual/manual';
+import { Pesquisa } from '../pages/pesquisa/pesquisa';
 import { Politica } from '../pages/politica/politica';
 
 import { Alterar } from '../pages/senha/alterar/alterar';
@@ -25,10 +27,12 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   declarations: [
     MyApp,
 
+    Detalhes,
     Escolher,
     HomePage,
     ListPage,
     Manual,
+    Pesquisa,
     Politica,
 
     Alterar,
@@ -47,10 +51,12 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   entryComponents: [
     MyApp,
 
+    Detalhes,
     Escolher,
     HomePage,
     ListPage,
     Manual,
+    Pesquisa,
     Politica,
 
     Alterar,

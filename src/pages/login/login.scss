@@ -6,12 +6,14 @@ form {
     background-color: gray;
 }
 
+ion-input{
+    background-color: blue;
+}
+
 #user {
-    //background-color: blue;
     border: 20px;
 }
 
 #senha {
-    //background-color: blue;
     border: 20px, outset, blue;
 }

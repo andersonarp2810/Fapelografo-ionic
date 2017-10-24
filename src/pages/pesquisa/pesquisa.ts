@@ -2,24 +2,24 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
 /**
- * Generated class for the Escolher page.
+ * Generated class for the Pesquisa page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
 @Component({
-  selector: 'page-escolher',
-  templateUrl: 'escolher.html',
+  selector: 'page-pesquisa',
+  templateUrl: 'pesquisa.html',
 })
-export class Escolher {
+export class Pesquisa {
 
-  op1 = true;
+  escolha: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad Escolher');
+    console.log('ionViewDidLoad Pesquisa');
   }
 
 }
