@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import * as SHA2 from '../../components/sha2/sha2';
 import { Tostador } from '../../providers/tostador';
@@ -17,9 +17,10 @@ import { Tostador } from '../../providers/tostador';
 export class Login {
 
   botaotxt: string;
-  botaoDesativado: boolean;
+  botaoDesativado: boolean = false;
   user: string;
   senha: string;
+  @ViewChild('loginForm') loginForm;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public tostador: Tostador) {
     this.botaotxt = "Entrar";

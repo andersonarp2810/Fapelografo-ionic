@@ -16,20 +16,22 @@
 <ion-content padding>
 
   <form name="formu" id="formu" (ngSubmit)="enviar()" #senhaForm="ngForm">
-    <ion-label for="anti">Senha Antiga:</ion-label>
+    <ion-label for="anti" stacked>Senha Antiga:</ion-label>
     <ion-input id="anti" name="anti" [(ngModel)]="antiga" required></ion-input>
     <br>
-    <ion-label for="nova">Nova Senha:</ion-label>
+    <ion-label for="nova" stacked>Nova Senha:</ion-label>
     <ion-input id="nova" name="nova" [(ngModel)]="nova" required></ion-input>
     <br>
-    <ion-label for="confirma">Confirmar Nova Senha</ion-label>
+    <ion-label for="confirma" stacked>Confirmar Nova Senha</ion-label>
     <ion-input id="confirma" name="confirma" [(ngModel)]="confirma" required pattern="{{nova}}" #conf="ngModel"></ion-input>
-
+    <br>
     <div *ngIf="conf.errors">
       Pattern
     </div>
 
-    <button type="submit">Enviar</button>
+    <ion-buttons text-center>
+      <button type="submit" ion-button round [outline]="!senhaForm.valid" [disabled]="!senhaForm.valid">Enviar</button>
+    </ion-buttons>
   </form>
 
 </ion-content>

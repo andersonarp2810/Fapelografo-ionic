@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Tostador } from '../../../providers/tostador';
 
@@ -20,13 +20,12 @@ export class Alterar {
   botaovale: boolean;
   confirma: string;
   nova: string;
+  @ViewChild('senhaForm') senhaForm;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public tostador: Tostador) {
   }
 
   enviar() {
-
-
 
     setTimeout(() => {
       this.tostador.tostar(this.antiga + this.nova, 500);

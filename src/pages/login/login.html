@@ -15,15 +15,16 @@
 
 <ion-content padding>
 
-  <form name="formu" id="formu">
-    <ion-label for="user">Usuário:</ion-label>
+  <form name="formu" id="formu" #loginForm="ngForm" (ngSubmit)="login()">
+    <ion-label for="user" stacked>Usuário:</ion-label>
     <ion-input name="user" id="user" type="text" [(ngModel)]="user" required></ion-input>
     <br>
-    <ion-label for="senha">Senha:</ion-label>
+    <ion-label for="senha" stacked>Senha:</ion-label>
     <ion-input name="senha" id="senha" type="password" [(ngModel)]="senha" required></ion-input>
+    <br>
+    <ion-buttons text-center>
+      <button text-center type="submit" ion-button round [outline]="!loginForm.valid" [disabled]="!loginForm.valid || botaoDesativado">{{botaotxt}}</button>
+    </ion-buttons>
   </form>
-  <div padding>
-    <button ion-button block (click)="login()">{{botaotxt}}</button>
-  </div>
 
 </ion-content>
