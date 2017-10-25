@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, IonicPage } from 'ionic-angular';
 import { Tostador } from '../../../providers/tostador';
 /**
  * Generated class for the Recuperar page.
@@ -7,6 +7,9 @@ import { Tostador } from '../../../providers/tostador';
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
+
+@IonicPage()
+
 @Component({
   selector: 'page-recuperar',
   templateUrl: 'recuperar.html',

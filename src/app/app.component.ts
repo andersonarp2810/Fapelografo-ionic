@@ -3,48 +3,35 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { Escolher } from '../pages/escolher/escolher';
-import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
-import { Manual } from '../pages/manual/manual';
-import { Pesquisa } from '../pages/pesquisa/pesquisa';
-import { Politica } from '../pages/politica/politica';
-
-import { Alterar } from '../pages/senha/alterar/alterar';
-import { AreaProfessor } from '../pages/area-professor/area-professor';
-import { Enviar } from '../pages/enviar/enviar';
-import { Login } from '../pages/login/login';
-import { Recuperar } from '../pages/senha/recuperar/recuperar';
-
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  rootPage: any = "HomePage";
 
-  pages: Array<{ title: string, component: any }>;
-  prof: Array<{ title: string, component: any }>;
+  pages: Array<{ title: string, component: string }>;
+  prof: Array<{ title: string, component: string }>;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Home', component: HomePage },
-      { title: 'List', component: ListPage },
-      { title: 'Escolher Disciplinas', component: Escolher },
-      { title: 'Pesquisa e Filtros', component: Pesquisa },
-      { title: 'Área do Professor', component: AreaProfessor },
-      { title: 'Manual de Usuário', component: Manual },
-      { title: 'Política de Uso', component: Politica }
+      { title: 'Home', component: "HomePage" },
+      { title: 'List', component: "ListPage" },
+      { title: 'Escolher Disciplinas', component: "Escolher" },
+      { title: 'Pesquisa e Filtros', component: "Pesquisa" },
+      { title: 'Área do Professor', component: "AreaProfessor" },
+      { title: 'Manual de Usuário', component: "Manual" },
+      { title: 'Política de Uso', component: "Politica" }
     ];
     this.prof = [
-      { title: 'Enviar aviso', component: Enviar },
-      { title: 'Alterar senha', component: Alterar },
-      { title: 'Esqueci minha senha', component: Recuperar },
-      { title: 'Login', component: Login }
+      { title: 'Enviar aviso', component: "Enviar" },
+      { title: 'Alterar senha', component: "Alterar" },
+      { title: 'Esqueci minha senha', component: "Recuperar" },
+      { title: 'Login', component: "Login" }
     ];
 
   }
