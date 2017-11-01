@@ -1,6 +1,7 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { NavController, NavParams, IonicPage } from 'ionic-angular';
 import { Tostador } from '../../../providers/tostador';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 /**
  * Generated class for the Alterar page.
@@ -14,7 +15,7 @@ import { Tostador } from '../../../providers/tostador';
 @Component({
   selector: 'page-alterar',
   templateUrl: 'alterar.html',
-  providers: [Tostador]
+  providers: [Tostador],
 })
 export class Alterar {
 
@@ -23,13 +24,12 @@ export class Alterar {
   botaovale: boolean;
   confirma: string;
   nova: string;
-  @ViewChild('senhaForm') senhaForm;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public tostador: Tostador) {
   }
 
   enviar() {
-
+    console.log(this.form);
     setTimeout(() => {
       this.tostador.tostar(this.antiga + this.nova, 500);
     }, 2000);
@@ -37,6 +37,17 @@ export class Alterar {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad Alterar');
+  }
+
+  form = new FormGroup({
+    antiga: new FormControl('', Validators.minLength(2)),
+    nova: new FormControl('', Validators.minLength(2)),
+    confirma: new FormControl('', Validators.minLength(2)),
+  }, this.passwordMatchValidator);
+
+  passwordMatchValidator(g: FormGroup) {
+    return g.get('nova').value === g.get('confirma').value
+      ? {} : { 'mismatch': true };
   }
 
 }
