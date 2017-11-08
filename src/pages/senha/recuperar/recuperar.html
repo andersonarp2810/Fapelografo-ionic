@@ -16,10 +16,14 @@
 <ion-content padding>
 
   <form name="formu" id="formu" #recuperarForm="ngForm" (ngSubmit)="recuperar()">
-    <ion-label stacked>E-mail:</ion-label>
-    <ion-input type="email" id="email" name="email" [(ngModel)]="imei" required email></ion-input>
+    <div class="form-control">
+      <ion-item>
+        <ion-label floating>E-mail:</ion-label>
+        <ion-input type="email" id="email" name="email" [(ngModel)]="imei" required email></ion-input>
+      </ion-item>
+    </div>
 
-    <ion-buttons text-center>
+    <ion-buttons id="butao" text-center>
       <button type="submit" ion-button round [outline]="!recuperarForm.valid" [disabled]="!recuperarForm.valid || !botaovale">{{botaotxt}}</button>
     </ion-buttons>
   </form>

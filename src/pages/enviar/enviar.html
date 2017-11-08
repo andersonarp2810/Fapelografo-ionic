@@ -14,38 +14,36 @@
 
 
 <ion-content padding>
+  array de disciplinas
+  {{disciplina}}
 
   <form name="formu" id="formu" (ngSubmit)="enviar()" [formGroup]="form">
 
     <div class="form-group">
-      <ion-label stacked>Disciplina</ion-label>
-      <ion-select id="disciplina" name="disciplina" [(ngModel)]="disciplina" formControlName="disciplina" [formGroup]="form" (ngModelChange)="disciplinaChange($event)"
-        cancelText="Cancelar" required>
-        <ion-option value="um">Um</ion-option>
-        <ion-option value="dois">Dois</ion-option>
-      </ion-select>
-      {{disciplina}}
+      <ion-item>
+        <ion-label floating>Disciplina(s)</ion-label>
+        <ion-select multiple="true" id="disciplina" name="disciplina" [(ngModel)]="disciplina" formControlName="disciplina" [formGroup]="form"
+          (ngModelChange)="disciplinaChange($event)" cancelText="Cancelar" required>
+          <ion-option value="um">Um</ion-option>
+          <ion-option value="dois">Dois</ion-option>
+          <ion-option value="tres">Tres</ion-option>
+          <ion-option value="cuatro">Cuatro</ion-option>
+        </ion-select>
+      </ion-item>
     </div>
-
-
 
     <div class="form-group">
-      <ion-label stacked>Tipo</ion-label>
-      <ion-select id="tipo" name="tipo'" [(ngModel)]="tipo" formControlName="tipo" [formGroup]="form" (ngModelChange)="tipoChange($event)"
-        cancelText="Cancelar" required>
-        <ion-option value="um">Um</ion-option>
-        <ion-option value="dois">Dois</ion-option>
-      </ion-select>
-      {{tipo}}
+      <ion-item>
+        <ion-label floating>Mensagem</ion-label>
+        <ion-textarea rows="5" class="form-control" id="mensagem" name="mensagem" [(ngModel)]="mensagem" formControlName="mensagem"
+          [formGroup]="form" required></ion-textarea>
+      </ion-item>
     </div>
 
 
-
-    <div class="form-group">
-      <ion-label stacked>Mensagem</ion-label>
-      <ion-textarea class="form-control" id="mensagem" name="mensagem" [(ngModel)]="mensagem" formControlName="mensagem" [formGroup]="form"
-        required></ion-textarea>
-    </div>
+    <ion-buttons id="butao" text-center>
+      <button type="submit" ion-button round [outline]="!form.valid" [disabled]="false">Enviar</button>
+    </ion-buttons>
 
   </form>
 

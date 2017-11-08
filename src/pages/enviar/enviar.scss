@@ -1,7 +1,13 @@
 page-enviar {
+    #butao{
+        //position: absolute; bottom: 10vh; left: 33vw;
+        position: relative; top: 15vh;
+    }
 
-}
-
-ion-textarea{
-    border: ridge;
+    #mensagem{
+        //height: 20vh;
+    }
+    ion-select{
+        //border-bottom-style: ridge;
+    }
 }

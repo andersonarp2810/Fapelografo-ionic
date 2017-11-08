@@ -16,25 +16,33 @@
 <ion-content padding>
 
   <form name="formu" id="formu" (ngSubmit)="enviar()" [formGroup]="form">
+
     <div class="form-group">
-      <ion-label for="anti" stacked>Senha Antiga:</ion-label>
-      <ion-input class="form-control" id="anti" name="anti" [(ngModel)]="antiga" formControlName="antiga" [formGroup]="form" required></ion-input>
+      <ion-item>
+        <ion-label for="anti" floating>Senha Antiga</ion-label>
+        <ion-input class="form-control" id="anti" name="anti" [(ngModel)]="antiga" formControlName="antiga" [formGroup]="form" required></ion-input>
+      </ion-item>
     </div>
 
     <div class="form-group">
-      <ion-label for="nova" stacked>Nova Senha:</ion-label>
-      <ion-input class="form-control" id="nova" name="nova" [(ngModel)]="nova" formControlName="nova" [formGroup]="form" required></ion-input>
+      <ion-item>
+        <ion-label for="nova" floating>Nova Senha</ion-label>
+        <ion-input class="form-control" id="nova" name="nova" [(ngModel)]="nova" formControlName="nova" [formGroup]="form" required></ion-input>
+      </ion-item>
     </div>
 
     <div class="form-group">
-      <ion-label for="confirma" stacked>Confirmar Nova Senha</ion-label>
-      <ion-input class="form-control" id="confirma" name="confirma" [(ngModel)]="confirma" formControlName="confirma" [formGroup]="form"
-        required></ion-input>
+      <ion-item>
+        <ion-label for="confirma" floating>Confirmar Nova Senha</ion-label>
+        <ion-input class="form-control" id="confirma" name="confirma" [(ngModel)]="confirma" formControlName="confirma" [formGroup]="form"
+          required></ion-input>
+      </ion-item>
     </div>
 
-    <ion-buttons text-center>
+    <ion-buttons id="butao" text-center>
       <button type="submit" ion-button round [outline]="!form.valid" [disabled]="false">Enviar</button>
     </ion-buttons>
+
   </form>
 
 </ion-content>
