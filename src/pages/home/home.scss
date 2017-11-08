@@ -34,22 +34,34 @@ ion-col{
 
 .um{
 	ion-col{
-		background-color: darkslategrey;
+		background-color: #2f4f4f;
 	}
 }
 
 .dois{
 	ion-col{
-		background-color: darkolivegreen;
+		background-color: #556b2f;
 	}
 }
 
-#c2{
+.c2{
 	//border-style: ridge;
 	//border-color: darkolivegreen;
 	width: fit-content;
 	color: white;
-	background-color: darkolivegreen;
+	//background-color: darkolivegreen;
 	padding: 5px;
 	margin-bottom: 0px;
+	margin-top: 0px;
+}
+
+.container-class{
+	margin-bottom: 15px;
+	ion-scroll {
+		ion-row {
+			ion-col{
+				border-top-width: 0px;
+			}
+		}
+	}
 }

@@ -15,4 +15,38 @@
 
 <ion-content padding>
 
+  <form name="formu" id="formu" (ngSubmit)="enviar()" [formGroup]="form">
+
+    <div class="form-group">
+      <ion-label stacked>Disciplina</ion-label>
+      <ion-select id="disciplina" name="disciplina" [(ngModel)]="disciplina" formControlName="disciplina" [formGroup]="form" (ngModelChange)="disciplinaChange($event)"
+        cancelText="Cancelar" required>
+        <ion-option value="um">Um</ion-option>
+        <ion-option value="dois">Dois</ion-option>
+      </ion-select>
+      {{disciplina}}
+    </div>
+
+
+
+    <div class="form-group">
+      <ion-label stacked>Tipo</ion-label>
+      <ion-select id="tipo" name="tipo'" [(ngModel)]="tipo" formControlName="tipo" [formGroup]="form" (ngModelChange)="tipoChange($event)"
+        cancelText="Cancelar" required>
+        <ion-option value="um">Um</ion-option>
+        <ion-option value="dois">Dois</ion-option>
+      </ion-select>
+      {{tipo}}
+    </div>
+
+
+
+    <div class="form-group">
+      <ion-label stacked>Mensagem</ion-label>
+      <ion-textarea class="form-control" id="mensagem" name="mensagem" [(ngModel)]="mensagem" formControlName="mensagem" [formGroup]="form"
+        required></ion-textarea>
+    </div>
+
+  </form>
+
 </ion-content>

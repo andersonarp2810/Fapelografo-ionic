@@ -10,161 +10,20 @@
 
     TODO: calendario
 
-    <h4>Categoria1</h4>
-    <div class="container-class">
-        <ion-scroll scrollX="true" scrollbar-x="false" scrollbar-y="false" class="listahorizontal">
-            <ion-row nowrap class="um">
-                <ion-col width-20>
-                    <h2>Crash Bandicoot</h2>
-                    <h3>Lorem ipsum</h3>
-                    <h4>Dolor sit amet</h4>
-                </ion-col>
-                <ion-col width-20>
-                    <h2>The Legend of Zelda</h2>
-                    <h3>Lorem ipsum</h3>
-                    <h4>Dolor sit amet</h4>
-                </ion-col>
-                <ion-col width-20>
-                    <h2>Mario Kart</h2>
-                    <h3>Lorem ipsum</h3>
-                    <h4>Dolor sit amet</h4>
-                </ion-col>
-                <ion-col width-20>
-                    <h2>Doom</h2>
-                    <h3>Lorem ipsum</h3>
-                    <h4>Dolor sit amet</h4>
-                </ion-col>
-                <ion-col width-20>
-                    <h2>Pokémon</h2>
-                    <h3>Lorem ipsum</h3>
-                    <h4>Dolor sit amet</h4>
-                </ion-col>
-                <ion-col width-20>
-                    <h2>Final Fantasy</h2>
-                    <h3>Lorem ipsum</h3>
-                    <h4>Dolor sit amet</h4>
-                </ion-col>
-                <ion-col width-20>
-                    <h2>Shovel Knight</h2>
-                    <h3>Lorem ipsum</h3>
-                    <h4>Dolor sit amet</h4>
-                </ion-col>
-                <ion-col width-20>
-                    <h2>Crash Bandicoot</h2>
-                    <h3>Lorem ipsum</h3>
-                    <h4>Dolor sit amet</h4>
-                </ion-col>
-                <ion-col width-20>
-                    <h2>The Legend of Zelda</h2>
-                    <h3>Lorem ipsum</h3>
-                    <h4>Dolor sit amet</h4>
-                </ion-col>
-                <ion-col width-20>
-                    <h2>Mario Kart</h2>
-                    <h3>Lorem ipsum</h3>
-                    <h4>Dolor sit amet</h4>
-                </ion-col>
-                <ion-col width-20>
-                    <h2>Doom</h2>
-                    <h3>Lorem ipsum</h3>
-                    <h4>Dolor sit amet</h4>
-                </ion-col>
-                <ion-col width-20>
-                    <h2>Pokémon</h2>
-                    <h3>Lorem ipsum</h3>
-                    <h4>Dolor sit amet</h4>
-                </ion-col>
-                <ion-col width-20>
-                    <h2>Final Fantasy</h2>
-                    <h3>Lorem ipsum</h3>
-                    <h4>Dolor sit amet</h4>
-                </ion-col>
-                <ion-col width-20>
-                    <h2>Shovel Knight</h2>
-                    <h3>Lorem ipsum</h3>
-                    <h4>Dolor sit amet</h4>
-                </ion-col>
-            </ion-row>
-        </ion-scroll>
+    <div *ngFor="let item of avisos">
+        <h3 class="c2" [ngStyle]="{'background-color': item.cor}">{{item.categoria}}</h3>
+        <div class="container-class">
+            <ion-scroll scrollX="true" scrollbar-x="false" scrollbar-y="false" class="listahorizontal">
+                <ion-row nowrap>
+                    <ion-col col-20 *ngFor="let aviso of item.avisos" [ngStyle]="{'background-color': item.cor}">
+                        <h2>{{aviso.a}}</h2>
+                        <h3>{{aviso.b}}</h3>
+                        <h3>{{aviso.c}}</h3>
+                    </ion-col>
+                </ion-row>
+            </ion-scroll>
+        </div>
     </div>
 
-    <!-- so pra ver-->
-    <h3 id="c2">Categoria2</h3>
-    <div class="container-class">
-        <ion-scroll scrollX="true" class="listahorizontal">
-            <ion-row nowrap class="dois">
-                <ion-col width-20>
-                    <h2>Crash Bandicoot</h2>
-                    <h3>Lorem ipsum</h3>
-                    <h4>Dolor sit amet</h4>
-                </ion-col>
-                <ion-col width-20>
-                    <h2>The Legend of Zelda</h2>
-                    <h3>Lorem ipsum</h3>
-                    <h4>Dolor sit amet</h4>
-                </ion-col>
-                <ion-col width-20>
-                    <h2>Mario Kart</h2>
-                    <h3>Lorem ipsum</h3>
-                    <h4>Dolor sit amet</h4>
-                </ion-col>
-                <ion-col width-20>
-                    <h2>Doom</h2>
-                    <h3>Lorem ipsum</h3>
-                    <h4>Dolor sit amet</h4>
-                </ion-col>
-                <ion-col width-20>
-                    <h2>Pokémon</h2>
-                    <h3>Lorem ipsum</h3>
-                    <h4>Dolor sit amet</h4>
-                </ion-col>
-                <ion-col width-20>
-                    <h2>Final Fantasy</h2>
-                    <h3>Lorem ipsum</h3>
-                    <h4>Dolor sit amet</h4>
-                </ion-col>
-                <ion-col width-20>
-                    <h2>Shovel Knight</h2>
-                    <h3>Lorem ipsum</h3>
-                    <h4>Dolor sit amet</h4>
-                </ion-col>
-                <ion-col width-20>
-                    <h2>Crash Bandicoot</h2>
-                    <h3>Lorem ipsum</h3>
-                    <h4>Dolor sit amet</h4>
-                </ion-col>
-                <ion-col width-20>
-                    <h2>The Legend of Zelda</h2>
-                    <h3>Lorem ipsum</h3>
-                    <h4>Dolor sit amet</h4>
-                </ion-col>
-                <ion-col width-20>
-                    <h2>Mario Kart</h2>
-                    <h3>Lorem ipsum</h3>
-                    <h4>Dolor sit amet</h4>
-                </ion-col>
-                <ion-col width-20>
-                    <h2>Doom</h2>
-                    <h3>Lorem ipsum</h3>
-                    <h4>Dolor sit amet</h4>
-                </ion-col>
-                <ion-col width-20>
-                    <h2>Pokémon</h2>
-                    <h3>Lorem ipsum</h3>
-                    <h4>Dolor sit amet</h4>
-                </ion-col>
-                <ion-col width-20>
-                    <h2>Final Fantasy</h2>
-                    <h3>Lorem ipsum</h3>
-                    <h4>Dolor sit amet</h4>
-                </ion-col>
-                <ion-col width-20>
-                    <h2>Shovel Knight</h2>
-                    <h3>Lorem ipsum</h3>
-                    <h4>Dolor sit amet</h4>
-                </ion-col>
-            </ion-row>
-        </ion-scroll>
-    </div>
 
 </ion-content>

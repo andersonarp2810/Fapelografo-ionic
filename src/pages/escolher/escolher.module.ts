@@ -9,10 +9,12 @@ import { ComponentsModule } from '../../components/components.module';
   ],
   imports: [
     IonicPageModule.forChild(Escolher),
-    ComponentsModule
+    ComponentsModule,
   ],
   exports: [
     Escolher,
+  ],
+  providers: [
   ]
 })
-export class EscolherModule {}
+export class EscolherModule { }

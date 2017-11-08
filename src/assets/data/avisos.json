@@ -1,0 +1,64 @@
+[
+    {
+        "categoria": "Categoria 1",
+        "cor": "#2f4f4f",
+        "avisos": [
+            {
+                "a": "Aula massa",
+                "b": "Noutra sala",
+                "c": "fapce.com.br"
+            },
+            {
+                "a": "Aula daora",
+                "b": "Noutra sala",
+                "c": "fapce.com.br"
+            },
+            {
+                "a": "Aula massa",
+                "b": "Nessa sala",
+                "c": "fapce.com.br"
+            },
+            {
+                "a": "Aula massa",
+                "b": "Aqui mesmo",
+                "c": "fapce.com.br"
+            },
+            {
+                "a": "Aula massa",
+                "b": "Alguma lugar",
+                "c": "fapce.com.br"
+            }
+        ]
+    },
+    {
+        "categoria": "Categoria 2",
+        "cor": "#556b2f",
+        "avisos": [
+            {
+                "a": "Aula massa",
+                "b": "Noutra sala",
+                "c": "fapce.com.br"
+            },
+            {
+                "a": "Aula daora",
+                "b": "Noutra sala",
+                "c": "fapce.com.br"
+            },
+            {
+                "a": "Aula massa",
+                "b": "Nessa sala",
+                "c": "fapce.com.br"
+            },
+            {
+                "a": "Aula massa",
+                "b": "Aqui mesmo",
+                "c": "fapce.com.br"
+            },
+            {
+                "a": "Aula massa",
+                "b": "Alguma lugar",
+                "c": "fapce.com.br"
+            }
+        ]
+    }
+]

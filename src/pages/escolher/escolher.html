@@ -17,15 +17,57 @@
 
   <ion-list>
 
-    <ion-item>
-      <ion-label>Pepperoni</ion-label>
-      <ion-checkbox [(ngModel)]="op1"></ion-checkbox>
+    <ion-item-group>
+      <ion-item-divider color="light">Cursos</ion-item-divider>
+      <ion-row>
+        <ion-col col-3>
+          <ion-item>
+            <ion-checkbox [(ngModel)]="op1"></ion-checkbox>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item>
+            <ion-label>Disciplina1</ion-label>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col col-3>
+          <ion-item>
+            <ion-checkbox [(ngModel)]="op2"></ion-checkbox>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item>
+            <ion-label>Disciplina2</ion-label>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-item-group>
+
+
+    <ion-item *ngFor="let p of pages; let i=index" text-wrap (click)="toggleLevel1('idx'+i)" [ngClass]="{active: isLevel1Shown('idx'+i)}">
+      <h4>
+        {{p.category}}
+        <ion-icon color="success" item-right [name]="isLevel1Shown('idx'+i) ? 'arrow-dropdown' : 'arrow-dropright'"></ion-icon>
+      </h4>
+      <!--ion-checkbox></ion-checkbox-->
+      <ion-list *ngIf="isLevel1Shown('idx'+i)">
+        <ion-item *ngFor="let s of p.subs; let i2=index" text-wrap (click)="toggleLevel2('idx'+i+'idx'+i2)" [ngClass]="{active: isLevel2Shown('idx'+i+'idx'+i2)}">
+          <h4>
+            {{s.subcategory}}
+            <ion-icon color="success" item-right [name]="isLevel2Shown('idx'+i+'idx'+i2) ? 'arrow-dropdown' : 'arrow-dropright'"></ion-icon>
+          </h4>
+          <ion-list *ngIf="isLevel2Shown('idx'+i+'idx'+i2)">
+            <ion-item *ngFor="let m of s.manufactures" text-wrap>
+              {{m.manufacture}}
+            </ion-item>
+          </ion-list>
+        </ion-item>
+      </ion-list>
     </ion-item>
 
-    <ion-item>
-        <ion-label>Pepperoni</ion-label>
-        <ion-checkbox [(ngModel)]="op1"></ion-checkbox>
-      </ion-item>
 
   </ion-list>
 
