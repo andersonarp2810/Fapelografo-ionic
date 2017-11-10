@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController, NavParams, IonicPage } from 'ionic-angular';
+import { MenuController, NavController, NavParams, IonicPage } from 'ionic-angular';
 import * as SHA2 from '../../components/sha2/sha2';
 import { Tostador } from '../../providers/tostador';
 
@@ -25,7 +25,7 @@ export class Login {
   senha: string;
   @ViewChild('loginForm') loginForm;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public tostador: Tostador) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public tostador: Tostador, public menu: MenuController) {
     this.botaotxt = "Entrar";
   }
 
@@ -36,8 +36,12 @@ export class Login {
     setTimeout(() => {
       this.botaoDesativado = false;
       this.botaotxt = "Entrar";
-      this.tostador.tostar(SHA2.SHA2_256("batata"), 2000);
-    }, 3000);
+      //this.tostador.tostar(SHA2.SHA2_256("batata"), 2000);
+      this.tostador.tostar('Login', 500);
+      this.navCtrl.setRoot('AreaProfessor');
+      this.menu.enable(false, 'unauthenticated');
+      this.menu.enable(true, 'authenticated');
+    }, 300);
   }
 
   ionViewDidLoad() {

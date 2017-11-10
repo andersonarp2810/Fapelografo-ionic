@@ -1,10 +1,10 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
+import { MenuController, Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 @Component({
-  templateUrl: 'app.html'
+  templateUrl: 'app.html',
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
@@ -12,28 +12,33 @@ export class MyApp {
   rootPage: any = "HomePage";
 
   pages: Array<{ title: string, component: string }>;
+  login: Array<{ title: string, component: string }>;
   prof: Array<{ title: string, component: string }>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public menu: MenuController) {
     this.initializeApp();
-
+    this.menu.enable(true, 'unauthenticated');
+    this.menu.enable(false, 'authenticated');
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: "HomePage" },
       { title: 'Escolher Disciplinas', component: "Escolher" },
       { title: 'Pesquisa e Filtros', component: "Pesquisa" },
-      { title: 'Área do Professor', component: "AreaProfessor" },
       { title: 'Manual de Usuário', component: "Manual" },
       { title: 'Política de Uso', component: "Politica" }
     ];
+    this.login = [
+      { title: 'Login', component: "Login" },
+      { title: 'Esqueci minha senha', component: "Recuperar" }
+    ]
     this.prof = [
+      { title: 'Área do Professor', component: "AreaProfessor" },
       { title: 'Enviar aviso', component: "Enviar" },
-      { title: 'Alterar senha', component: "Alterar" },
-      { title: 'Esqueci minha senha', component: "Recuperar" },
-      { title: 'Login', component: "Login" }
+      { title: 'Alterar senha', component: "Alterar" }
     ];
 
   }
+
 
   initializeApp() {
     this.platform.ready().then(() => {
@@ -42,6 +47,12 @@ export class MyApp {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
+  }
+
+  logout() {
+    this.nav.setRoot("Login");
+    this.menu.enable(true, 'unauthenticated');
+    this.menu.enable(false, 'authenticated');
   }
 
   openPage(page) {
