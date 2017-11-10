@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { MenuController, NavController, NavParams, IonicPage } from 'ionic-angular';
 import * as SHA2 from '../../components/sha2/sha2';
 import { Tostador } from '../../providers/tostador';
+import { SHA2_256 } from '../../components/sha2/sha2';
 
 /**
  * Generated class for the Login page.
@@ -27,6 +28,7 @@ export class Login {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public tostador: Tostador, public menu: MenuController) {
     this.botaotxt = "Entrar";
+    SHA2_256('asdf');
   }
 
   login() {

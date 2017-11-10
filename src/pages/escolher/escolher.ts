@@ -23,16 +23,14 @@ export class Escolher {
   op2: boolean = false;
   op3: boolean = false;
 
-  pages: any;
-  showLevel1 = null;
-  showLevel2 = null;
+  information: any[];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public dataService: DataServiceProvider) {
 
     this.dataService.getMenus()
       .subscribe((response) => {
-        this.pages = response;
-        console.log(this.pages);
+        console.log(response);
+        this.information = response.items;
       });
 
   }
@@ -41,30 +39,13 @@ export class Escolher {
     console.log('ionViewDidLoad Escolher');
   }
 
-  toggleLevel1(idx) {
-    if (this.isLevel1Shown(idx)) {
-      this.showLevel1 = null;
-    } else {
-      this.showLevel1 = idx;
-    }
-  };
 
-  toggleLevel2(idx) {
-    if (this.isLevel2Shown(idx)) {
-      this.showLevel1 = null;
-      this.showLevel2 = null;
-    } else {
-      this.showLevel1 = idx;
-      this.showLevel2 = idx;
-    }
-  };
+  toggleSection(i) {
+    this.information[i].open = !this.information[i].open;
+  }
 
-  isLevel1Shown(idx) {
-    return this.showLevel1 === idx;
-  };
-
-  isLevel2Shown(idx) {
-    return this.showLevel2 === idx;
-  };
+  toggleItem(i, j) {
+    this.information[i].children[j].open = !this.information[i].children[j].open;
+  }
 
 }
