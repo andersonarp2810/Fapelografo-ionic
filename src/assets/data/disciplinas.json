@@ -1,0 +1,17 @@
+{
+    "items": [
+        {
+            "name": "Sistemas de Informação",
+            "children": [
+                {
+                    "name": "APIS",
+                    "information": "Análise, Projeto e Implementação de Sistemas"
+                },
+                {
+                    "name": "BDOO",
+                    "information": "Banco de Dados Orientado a Objeto"
+                }
+            ]
+        }
+    ]
+}

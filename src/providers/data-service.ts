@@ -15,8 +15,8 @@ export class DataServiceProvider {
     console.log('Hello DataServiceProvider Provider');
   }
 
-  getMenus() {
-    return this.http.get('assets/data/menus.json')
+  getDisciplinas() {
+    return this.http.get('assets/data/disciplinas.json')
       .map((response: Response) => response.json());
   }
 
