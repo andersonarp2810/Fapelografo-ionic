@@ -17,14 +17,14 @@
 
   <ion-list class="accordion-list">
     <!-- First Level -->
-    <ion-list-header *ngFor="let item of information; let i = index" no-lines no-padding no-margin>
+    <ion-list-header text-wrap *ngFor="let item of information; let i = index" no-lines no-padding no-margin>
       <!-- Toggle Button -->
       <ion-row>
         <ion-col col-9 no-padding>
           <button class="label" ion-item (click)="toggleSection(i)" detail-none>
             <ion-icon item-left name="arrow-forward" *ngIf="!item.open"></ion-icon>
             <ion-icon item-left name="arrow-down" *ngIf="item.open"></ion-icon>
-            {{ item.name }}
+            <span style="font-size:medium">{{ item.name }}</span>
           </button>
         </ion-col>
         <ion-col col-3 no-padding class="flex">

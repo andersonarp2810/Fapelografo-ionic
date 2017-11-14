@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, IonicPage } from 'ionic-angular';
+import { DataServiceProvider } from '../../providers/data-service';
 
 /**
  * Generated class for the Pesquisa page.
@@ -17,12 +18,23 @@ import { NavController, NavParams, IonicPage } from 'ionic-angular';
 export class Pesquisa {
 
   escolha: string;
+  categorias: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public dataService: DataServiceProvider) {
+
+    this.dataService.getCategorias()
+      .subscribe((response) => {
+        console.log(response);
+        this.categorias = response.items;
+      });
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad Pesquisa');
   }
 
+
+  toggleSection(i) {
+    this.categorias[i].open = !this.categorias[i].open;
+  }
 }

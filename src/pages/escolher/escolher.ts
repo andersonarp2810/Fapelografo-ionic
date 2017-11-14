@@ -27,7 +27,7 @@ export class Escolher {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public dataService: DataServiceProvider) {
 
-    this.dataService.getDisciplinas()
+    this.dataService.getCategorias()
       .subscribe((response) => {
         response.items.map((item) => {
           item['check'] = false;

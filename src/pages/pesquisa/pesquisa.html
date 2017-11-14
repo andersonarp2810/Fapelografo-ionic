@@ -15,54 +15,49 @@
 
 <ion-content padding>
 
-  <ion-list radio-group [(ngModel)]="escolha">
+  <ion-list class="accordion-list" radio-group [(ngModel)]="escolha">
 
-    <ion-item-group>
-      <ion-item-divider color="light">Cursos</ion-item-divider>
+    <!-- First Level -->
+    <ion-list-header text-wrap *ngFor="let item of categorias; let i = index" no-lines no-padding no-margin>
+      <!-- Toggle Button -->
+      <ion-row>
+        <ion-col col-9 no-padding>
+          <button class="label" ion-item (click)="toggleSection(i)" detail-none>
+            <ion-icon item-left name="arrow-forward" *ngIf="!item.open"></ion-icon>
+            <ion-icon item-left name="arrow-down" *ngIf="item.open"></ion-icon>
+            <span style="font-size:medium">{{ item.name }}</span>
+          </button>
+        </ion-col>
+        <ion-col col-3 no-padding class="flex">
+          <ion-item>
+            <ion-radio [value]="item.alias.toString()"></ion-radio>
+          </ion-item>
+        </ion-col>
+      </ion-row>
 
-      <ion-item>
-        <ion-label>Cord</ion-label>
-        <ion-radio value="cord"></ion-radio>
-      </ion-item>
+      <ion-list *ngIf="item.children && item.open" no-lines>
 
-      <ion-item>
-        <ion-label>Duesenberg</ion-label>
-        <ion-radio value="duesenberg"></ion-radio>
-      </ion-item>
-    </ion-item-group>
+        <ion-list-header *ngFor="let child of item.children; let j = index" class="first-item" no-padding>
 
-    <ion-item-group>
-      <ion-item-divider color="secondary">Disciplinas de Batata</ion-item-divider>
+          <ion-row *ngIf="!child.children" class="child-row">
+            <ion-col>
+              <ion-item ion-item detail-none class="child-item" text-wrap>
+                <h2>{{ child.name }}</h2>
+                <p>{{ child.information }}</p>
+              </ion-item>
+            </ion-col>
+            <ion-col class="flex" col-3>
+              <ion-item class="child-check">
+                <ion-radio [value]="child.alias"></ion-radio>
+              </ion-item>
+            </ion-col>
+          </ion-row>
 
-      <ion-item>
-        <ion-label>Batata</ion-label>
-        <ion-radio value="batata"></ion-radio>
-      </ion-item>
+        </ion-list-header>
+      </ion-list>
 
-      <ion-item>
-        <ion-label>Poteito doce</ion-label>
-        <ion-radio value="poteito doce"></ion-radio>
-      </ion-item>
-
-    </ion-item-group>
-
-    <ion-item-group>
-        <ion-item-divider color="primary">Disciplinas de Macaxeira</ion-item-divider>
-
-      <ion-item>
-          <ion-label>Frita</ion-label>
-          <ion-radio value="frita"></ion-radio>
-        </ion-item>
-  
-        <ion-item>
-          <ion-label>Cozida</ion-label>
-          <ion-radio value="cozida"></ion-radio>
-        </ion-item>
-
-    </ion-item-group>
-
+    </ion-list-header>
   </ion-list>
 
   {{escolha}}
-
 </ion-content>
