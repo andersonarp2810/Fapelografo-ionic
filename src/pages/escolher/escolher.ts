@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, IonicPage } from 'ionic-angular';
+import { MenuController, NavController, NavParams, IonicPage } from 'ionic-angular';
 import { DataServiceProvider } from '../../providers/data-service';
+import { Storage } from '@ionic/storage';
+
 /**
  * Generated class for the Escolher page.
  *
@@ -25,7 +27,24 @@ export class Escolher {
 
   information: any[];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public dataService: DataServiceProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public dataService: DataServiceProvider, private storage: Storage, private menu: MenuController) {
+
+    this.storage.get('escolhas')
+      .then((dados) => {
+        console.log("dados");
+        console.log(dados);
+        if (dados == null) {
+          console.log('nao tem dados');
+          //this.menu.enable(false, 'unauthenticated');
+          //this.menu.enable(true, 'unauthenticated'); // pra pegar por enquanto
+        } else {
+          console.log('tem dados');
+          this.menu.enable(true, 'unauthenticated');
+        }
+      },
+      (erro) => {
+        console.error(erro);
+      });
 
     this.dataService.getCategorias()
       .subscribe((response) => {
@@ -66,6 +85,12 @@ export class Escolher {
     item.check = todos;
   }
 
+  salvar() {
+    let escolhas: any;
+    //this.storage.set('escolhas', this.escolhas);
+    console.log(this.storage.driver + ' ' + escolhas);
+    this.navCtrl.setRoot('Avisos');
+  }
 
   toggleSection(i) {
     this.information[i].open = !this.information[i].open;

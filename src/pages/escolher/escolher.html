@@ -6,7 +6,7 @@
 -->
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="primary">
     <botao-menu>Escolher Disciplinas</botao-menu>
   </ion-navbar>
 
@@ -57,5 +57,11 @@
 
     </ion-list-header>
   </ion-list>
+
+  <ion-fab bottom right>
+    <button ion-fab color="primary">
+      <ion-icon name="checkmark" (click)="salvar()"></ion-icon>
+    </button>
+  </ion-fab>
 
 </ion-content>

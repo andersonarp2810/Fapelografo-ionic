@@ -6,7 +6,7 @@
 -->
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="primary">
     <botao-menu>Pesquisa e Filtros</botao-menu>
   </ion-navbar>
 
@@ -59,5 +59,10 @@
     </ion-list-header>
   </ion-list>
 
-  {{escolha}}
+  <ion-fab bottom right>
+    <button ion-fab color="primary" [disabled]="escolha==undefined" (click)="filtrar()">
+      <ion-icon name="search"></ion-icon>
+    </button>
+  </ion-fab>
+
 </ion-content>

@@ -9,7 +9,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = "HomePage";
+  rootPage: any = "Escolher";
 
   pages: Array<{ title: string, component: string }>;
   login: Array<{ title: string, component: string }>;
@@ -17,11 +17,11 @@ export class MyApp {
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public menu: MenuController) {
     this.initializeApp();
-    this.menu.enable(true, 'unauthenticated');
+    this.menu.enable(false, 'unauthenticated');
     this.menu.enable(false, 'authenticated');
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Home', component: "HomePage" },
+      { title: 'Avisos', component: "Avisos" },
       { title: 'Escolher Disciplinas', component: "Escolher" },
       { title: 'Pesquisa e Filtros', component: "Pesquisa" },
       { title: 'Manual de Usuário', component: "Manual" },

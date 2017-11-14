@@ -33,6 +33,11 @@ export class Pesquisa {
     console.log('ionViewDidLoad Pesquisa');
   }
 
+  filtrar() {
+    console.log(this.escolha);
+    this.navCtrl.setRoot('Avisos', this.escolha);
+  }
+
 
   toggleSection(i) {
     this.categorias[i].open = !this.categorias[i].open;

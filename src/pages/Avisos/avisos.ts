@@ -1,21 +1,22 @@
 import { Component } from '@angular/core';
-import { NavController, IonicPage } from 'ionic-angular';
+import { NavController, NavParams, IonicPage } from 'ionic-angular';
 import { DataServiceProvider } from '../../providers/data-service';
 
 @IonicPage()
 
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html',
+  selector: 'page-avisos',
+  templateUrl: 'avisos.html',
   providers: [
     DataServiceProvider
   ]
 })
-export class HomePage {
+export class Avisos {
 
   avisos: any;
 
-  constructor(public navCtrl: NavController, public dados: DataServiceProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public dados: DataServiceProvider) {
+    
     this.dados.getAvisos()
       .subscribe(
       (data) => {
@@ -29,6 +30,8 @@ export class HomePage {
         console.log("completo");
       }
       );
+
+    console.log(navParams);
   }
 
 
