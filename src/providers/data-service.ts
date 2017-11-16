@@ -11,8 +11,15 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class DataServiceProvider {
 
+  caminho = "https://fapelografo.herokuapp.com/appfapelografo/mobile/get/";
+
   constructor(public http: Http) {
     console.log('Hello DataServiceProvider Provider');
+  }
+
+  getAvisos() {
+    return this.http.get('assets/data/avisos.json')
+      .map((response: Response) => response.json());
   }
 
   getCategorias() {
@@ -20,8 +27,12 @@ export class DataServiceProvider {
       .map((response: Response) => response.json());
   }
 
-  getAvisos() {
-    return this.http.get('assets/data/avisos.json')
+  getInformation() {
+    return this.http.post(
+      this.caminho,
+      JSON.stringify({
+        acao: 'get_information'
+      }))
       .map((response: Response) => response.json());
   }
 

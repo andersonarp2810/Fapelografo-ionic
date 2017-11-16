@@ -2,32 +2,26 @@
     "items": [
         {
             "name": "Sistemas de Informação",
-            "alias": "si",
             "children": [
                 {
                     "name": "APIS",
-                    "alias": "apis",
                     "information": "Análise, Projeto e Implementação de Sistemas"
                 },
                 {
                     "name": "BDOO",
-                    "alias": "bdoo",
                     "information": "Banco de Dados Orientado a Objeto"
                 }
             ]
         },
         {
             "name": "Outro",
-            "alias": "oto",
             "children": [
                 {
                     "name": "fi1",
-                    "alias": "f1",
                     "information": "Filho"
                 },
                 {
                     "name": "fi2",
-                    "alias": "f2",
                     "information": "Fi"
                 }
             ]

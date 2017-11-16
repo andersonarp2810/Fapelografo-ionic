@@ -30,7 +30,7 @@
         </ion-col>
         <ion-col col-3 no-padding class="flex">
           <ion-item>
-            <ion-radio [value]="item.alias.toString()"></ion-radio>
+            <ion-radio [value]="item.name"></ion-radio>
           </ion-item>
         </ion-col>
       </ion-row>
@@ -48,7 +48,7 @@
             </ion-col>
             <ion-col class="flex" col-3>
               <ion-item class="child-check">
-                <ion-radio [value]="child.alias"></ion-radio>
+                <ion-radio [value]="child.name"></ion-radio>
               </ion-item>
             </ion-col>
           </ion-row>

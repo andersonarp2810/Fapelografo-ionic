@@ -5,20 +5,18 @@ page-avisos {
     white-space: nowrap;
     height: 20vh;
 	width: 100vw;
+	.scroll-content {
+		padding: 0px !important;
+		margin-right: 10vw;
+		//left: -5vw !important;
+	}
 }
 
 //.container-class {
     ::-webkit-scrollbar {
                         display: none !important;
                     }
-//}
-
-.listahorizontal{
-	.scroll-content {
-		padding: 0px !important;
-		//left: -5vw !important;
-	}
-}
+//}	
 
 ion-row{
 	overflow-x: auto;
@@ -53,6 +51,7 @@ ion-col{
 	padding: 5px;
 	margin-bottom: 0px;
 	margin-top: 0px;
+	border-radius: 3px;
 }
 
 .container-class{

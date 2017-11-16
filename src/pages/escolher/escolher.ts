@@ -21,9 +21,7 @@ import { Storage } from '@ionic/storage';
 })
 export class Escolher {
 
-  op1: boolean = true;
-  op2: boolean = false;
-  op3: boolean = false;
+  primeiravez: boolean = true;
 
   information: any[];
 
@@ -35,10 +33,12 @@ export class Escolher {
         console.log(dados);
         if (dados == null) {
           console.log('nao tem dados');
+          this.primeiravez = true;
           //this.menu.enable(false, 'unauthenticated');
           //this.menu.enable(true, 'unauthenticated'); // pra pegar por enquanto
         } else {
           console.log('tem dados');
+          this.primeiravez = false;
           this.menu.enable(true, 'unauthenticated');
         }
       },
@@ -59,6 +59,15 @@ export class Escolher {
         console.log(response);
         this.information = response.items;
       });
+
+    this.dataService.getInformation()
+      .subscribe((response) => {
+        console.log(response);
+      },
+      (erro) => {
+        console.error(erro);
+      }
+      );
   }
 
   ionViewDidLoad() {
@@ -87,9 +96,14 @@ export class Escolher {
 
   salvar() {
     let escolhas: any;
-    //this.storage.set('escolhas', this.escolhas);
+    this.storage.set('escolhas', this.information);
     console.log(this.storage.driver + ' ' + escolhas);
     this.navCtrl.setRoot('Avisos');
+  }
+
+  limpar() {
+    this.storage.clear();
+    this.navCtrl.setRoot('Escolher');
   }
 
   toggleSection(i) {

@@ -18,7 +18,7 @@
                     <ion-col col-20 *ngFor="let aviso of item.avisos" [ngStyle]="{'background-color': item.cor}">
                         <h2>{{aviso.a}}</h2>
                         <h3>{{aviso.b}}</h3>
-                        <h3>{{aviso.c}}</h3>
+                        <h3><a [href]="'http://www.'+aviso.c" target="blank" >{{aviso.c}}</a></h3>
                     </ion-col>
                 </ion-row>
             </ion-scroll>

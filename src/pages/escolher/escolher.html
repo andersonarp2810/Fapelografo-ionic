@@ -7,13 +7,16 @@
 <ion-header>
 
   <ion-navbar color="primary">
-    <botao-menu>Escolher Disciplinas</botao-menu>
+    <botao-menu *ngIf="!primeiravez">Escolher Disciplinas</botao-menu>
+    <ion-title [hidden]="!primeiravez" style="text-transform: none !important;">Disciplinas</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+
+  <h6 [hidden]="!primeiravez" style="text-align: center">Escolha as disciplinas de interesse</h6>
 
   <ion-list class="accordion-list">
     <!-- First Level -->
@@ -59,8 +62,14 @@
   </ion-list>
 
   <ion-fab bottom right>
-    <button ion-fab color="primary">
-      <ion-icon name="checkmark" (click)="salvar()"></ion-icon>
+    <button ion-fab color="primary" (click)="salvar()">
+      <ion-icon name="checkmark"></ion-icon>
+    </button>
+  </ion-fab>
+
+  <ion-fab bottom left [hidden]="primeiravez">
+    <button ion-fab color="danger" (click)="limpar()">
+      <ion-icon name="pizza"></ion-icon>
     </button>
   </ion-fab>
 

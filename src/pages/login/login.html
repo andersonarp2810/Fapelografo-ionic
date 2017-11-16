@@ -19,7 +19,7 @@
 
     <div class="form-control">
       <ion-item>
-        <ion-label for="user" stacked>Usuário:</ion-label>
+        <ion-label for="user" floating>Usuário</ion-label>
         <ion-input name="user" id="user" type="text" [(ngModel)]="user" required></ion-input>
       </ion-item>
     </div>
@@ -27,13 +27,13 @@
 
     <div class="form-control">
       <ion-item>
-        <ion-label for="senha" stacked>Senha:</ion-label>
+        <ion-label for="senha" floating>Senha</ion-label>
         <ion-input name="senha" id="senha" type="password" [(ngModel)]="senha" required></ion-input>
       </ion-item>
     </div>
 
     <ion-buttons id="butao" text-center>
-      <button text-center type="submit" ion-button round [outline]="!loginForm.valid" [disabled]="!loginForm.valid || botaoDesativado">{{botaotxt}}</button>
+      <button type="submit" ion-button round [outline]="!loginForm.valid" [disabled]="!loginForm.valid || botaoDesativado">{{botaotxt}}</button>
     </ion-buttons>
   </form>
 
