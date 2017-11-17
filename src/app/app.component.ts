@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { MenuController, Nav, Platform } from 'ionic-angular';
+import { LoadingController, MenuController, Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -15,7 +15,7 @@ export class MyApp {
   login: Array<{ title: string, component: string }>;
   prof: Array<{ title: string, component: string }>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public menu: MenuController) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public menu: MenuController, public loading: LoadingController) {
     this.initializeApp();
     this.menu.enable(false, 'unauthenticated');
     this.menu.enable(false, 'authenticated');
@@ -50,9 +50,17 @@ export class MyApp {
   }
 
   logout() {
-    this.nav.setRoot("Login");
-    this.menu.enable(true, 'unauthenticated');
-    this.menu.enable(false, 'authenticated');
+    let load = this.loading.create({
+      content: 'Saindo...'
+    });
+    load.present();
+
+    setTimeout(() => {
+      this.nav.setRoot("Login");
+      this.menu.enable(true, 'unauthenticated');
+      this.menu.enable(false, 'authenticated');
+      load.dismiss();
+    }, 333);
   }
 
   openPage(page) {
