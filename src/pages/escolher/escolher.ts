@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { MenuController, NavController, NavParams, IonicPage } from 'ionic-angular';
+import { AlertController, LoadingController, MenuController, NavController, NavParams, IonicPage } from 'ionic-angular';
 import { DataServiceProvider } from '../../providers/data-service';
 import { Storage } from '@ionic/storage';
+import 'rxjs/add/operator/map';
+
 
 /**
  * Generated class for the Escolher page.
@@ -21,12 +23,20 @@ import { Storage } from '@ionic/storage';
 })
 export class Escolher {
 
+  escolhas = {
+    cursos: [],
+    disciplinas: []
+  };
+  information: any;
   primeiravez: boolean = true;
 
-  information: any[];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public dataService: DataServiceProvider, private storage: Storage, private menu: MenuController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public dataService: DataServiceProvider, private storage: Storage, private menu: MenuController, private loader: LoadingController, private alerter: AlertController) {
 
+    let load = this.loader.create({
+      content: 'Conectando...'
+    });
+    load.present();
     this.storage.get('escolhas')
       .then((dados) => {
         console.log("dados");
@@ -39,6 +49,7 @@ export class Escolher {
         } else {
           console.log('tem dados');
           this.primeiravez = false;
+          this.escolhas = dados;
           this.menu.enable(true, 'unauthenticated');
         }
       },
@@ -46,58 +57,77 @@ export class Escolher {
         console.error(erro);
       });
 
-    this.dataService.getCategorias()
-      .subscribe((response) => {
-        response.items.map((item) => {
-          item['check'] = false;
-          item.children.map((child) => {
-            child['check'] = false;
-            return child;
-          });
-          return item;
-        });
-        console.log(response);
-        this.information = response.items;
-      });
-
     this.dataService.getInformation()
-      .subscribe((response) => {
+      .subscribe((response: any) => {
         console.log(response);
+        let dados = response.json();
+        console.log(dados);
+        dados.cursos.map((curso) => {
+          curso['check'] = this.primeiravez ? false : this.escolhas.cursos.some(x => x == curso.id);
+          curso.disciplinas.map((disciplina) => {
+            disciplina['check'] = this.primeiravez ? false : this.escolhas.disciplinas.some(x => x == disciplina.id);
+            return disciplina;
+          });
+          return curso;
+        });
+        this.information = dados;
+        console.log(this.information);
+        load.dismiss();
       },
       (erro) => {
         console.error(erro);
-      }
-      );
+        load.dismiss();
+        let alerta = this.alerter.create({
+          title: 'Erro de conexão'
+        });
+        alerta.present();
+      });
+
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad Escolher');
+    console.log('ai dento');
   }
 
-  check(item) {
-    console.log(item);
-    item.children.map((child) => {
-      child.check = item.check;
-      return child;
+  check(curso) {
+    console.log(curso);
+    curso.disciplinas.map((disciplina) => {
+      disciplina.check = curso.check;
+      return disciplina;
     });
   }
 
-  checkChild(item, child) {
+  checkChild(curso, child) {
     console.log(child);
-    let todos = true;
-    for (let i = 0; i < item.children.length; i++) {
-      if (!item.children[i].check) {
-        todos = false;
-        break;
-      }
+    if (child.check) {
+      curso.check = true;
     }
-    item.check = todos;
+    else {
+      let todos = false;
+      for (let i = 0; i < curso.disciplinas.length; i++) {
+        if (curso.disciplinas[i].check) {
+          todos = true;
+          break;
+        }
+      }
+      curso.check = todos;
+    }
   }
 
   salvar() {
-    let escolhas: any;
-    this.storage.set('escolhas', this.information);
-    console.log(this.storage.driver + ' ' + escolhas);
+    this.escolhas = {
+      cursos: [],
+      disciplinas: []
+    };
+    console.log(this.information);
+    this.information.cursos.forEach(curso => {
+      if (curso.check) this.escolhas.cursos.push(curso.id);
+      curso.disciplinas.forEach(disc => {
+        if (disc.check) this.escolhas.disciplinas.push(disc.id);
+      });
+    });
+    this.storage.set('escolhas', this.escolhas);
+    console.log(this.escolhas);
     this.navCtrl.setRoot('Avisos');
   }
 
@@ -107,7 +137,7 @@ export class Escolher {
   }
 
   toggleSection(i) {
-    this.information[i].open = !this.information[i].open;
+    this.information.cursos[i].open = !this.information.cursos[i].open;
   }
 
 }

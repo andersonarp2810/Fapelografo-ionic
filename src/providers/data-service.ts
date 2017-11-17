@@ -14,7 +14,6 @@ export class DataServiceProvider {
   caminho = "https://fapelografo.herokuapp.com/appfapelografo/mobile/get/";
 
   constructor(public http: Http) {
-    console.log('Hello DataServiceProvider Provider');
   }
 
   getAvisos() {
@@ -32,8 +31,7 @@ export class DataServiceProvider {
       this.caminho,
       JSON.stringify({
         acao: 'get_information'
-      }))
-      .map((response: Response) => response.json());
+      }));
   }
 
 }
