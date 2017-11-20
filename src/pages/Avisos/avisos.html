@@ -8,22 +8,68 @@
 
     <!--http://ionicframework.com/docs/v2-->
 
-    TODO: calendario
+    <ion-list *ngIf="avisos != undefined && information != undefined">
 
-    <div *ngFor="let item of avisos">
-        <h3 class="c2" [ngStyle]="{'background-color': item.cor}">{{item.categoria}}</h3>
-        <div class="container-class">
-            <ion-scroll scrollX="true" scrollbar-x="false" scrollbar-y="false" class="listahorizontal">
-                <ion-row nowrap>
-                    <ion-col col-20 *ngFor="let aviso of item.avisos" [ngStyle]="{'background-color': item.cor}">
-                        <h2>{{aviso.a}}</h2>
-                        <h3>{{aviso.b}}</h3>
-                        <h3><a [href]="'http://www.'+aviso.c" target="blank" >{{aviso.c}}</a></h3>
-                    </ion-col>
-                </ion-row>
-            </ion-scroll>
+        <div *ngIf="avisos.calendario.length>0">
+            <h3 class="c2">Calendário</h3>
+            <div class="container-class">
+                <ion-scroll scrollX="true" scrollbar-x="false" scrollbar-y="false" class="listahorizontal">
+                    <ion-row nowrap>
+                        <ion-col col-20 *ngFor="let item of avisos.calendario">
+                            <h2>{{item.titulo}}</h2>
+                            <p>{{item.descricao}}</p>
+                            <img [src]="information.url_imagem + item.imagem">
+                        </ion-col>
+                    </ion-row>
+                </ion-scroll>
+            </div>
         </div>
-    </div>
 
+        <div *ngIf="avisos.gerais.length>0">
+            <h3 class="c2">Gerais</h3>
+            <div class="container-class">
+                <ion-scroll scrollX="true" scrollbar-x="false" scrollbar-y="false" class="listahorizontal">
+                    <ion-row nowrap>
+                        <ion-col col-20 *ngFor="let item of avisos.gerais">
+                            <h2>{{item.titulo}}</h2>
+                            <p>{{item.descricao}}</p>
+                            <img [src]="information.url_imagem + item.imagem">
+                        </ion-col>
+                    </ion-row>
+                </ion-scroll>
+            </div>
+        </div>
+
+        <div *ngIf="avisos.avisos_cursos.length>0">
+            <h3 class="c2">Gerais</h3>
+            <div class="container-class">
+                <ion-scroll scrollX="true" scrollbar-x="false" scrollbar-y="false" class="listahorizontal">
+                    <ion-row nowrap>
+                        <ion-col col-20 *ngFor="let item of avisos.avisos_cursos">
+                            <h2>{{item.titulo}}</h2>
+                            <p>{{item.descricao}}</p>
+                            <img [src]="url_imagem + item.imagem">
+                        </ion-col>
+                    </ion-row>
+                </ion-scroll>
+            </div>
+        </div>
+
+        <div *ngIf="avisos.aviso_disciplinas.length>0">
+            <h3 class="c2">Gerais</h3>
+            <div class="container-class">
+                <ion-scroll scrollX="true" scrollbar-x="false" scrollbar-y="false" class="listahorizontal">
+                    <ion-row nowrap>
+                        <ion-col col-20 *ngFor="let item of avisos.aviso_disciplinas">
+                            <h2>{{item.titulo}}</h2>
+                            <p>{{item.descricao}}</p>
+                            <img [src]="information.url_imagem + item.imagem">
+                        </ion-col>
+                    </ion-row>
+                </ion-scroll>
+            </div>
+        </div>
+
+    </ion-list>
 
 </ion-content>

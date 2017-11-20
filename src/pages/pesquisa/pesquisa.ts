@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, IonicPage } from 'ionic-angular';
+import { AlertController, LoadingController, NavController, NavParams, IonicPage } from 'ionic-angular';
 import { DataServiceProvider } from '../../providers/data-service';
 
 /**
@@ -17,15 +17,30 @@ import { DataServiceProvider } from '../../providers/data-service';
 })
 export class Pesquisa {
 
-  escolha: string;
-  categorias: any;
+  escolha: any;
+  information: any;
+  tipo: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public dataService: DataServiceProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public dataService: DataServiceProvider, private loader: LoadingController, private alerter: AlertController) {
 
-    this.dataService.getCategorias()
+    let load = this.loader.create({
+      content: 'Conectando...'
+    });
+    load.present();
+
+    this.dataService.getInformation()
       .subscribe((response) => {
-        console.log(response);
-        this.categorias = response.items;
+        let data = response.json();
+        this.information = data;
+        load.dismiss();
+      },
+      (erro) => {
+        console.error(erro);
+        load.dismiss();
+        let alerta = this.alerter.create({
+          title: 'Erro de conexão'
+        });
+        alerta.present();
       });
   }
 
@@ -34,12 +49,16 @@ export class Pesquisa {
   }
 
   filtrar() {
-    console.log(this.escolha);
-    this.navCtrl.setRoot('Avisos', this.escolha);
+    let pesquisa = {
+      escolha: this.escolha,
+      tipo: this.tipo
+    };
+    console.log(pesquisa);
+    this.navCtrl.setRoot('Avisos', pesquisa);
   }
 
 
   toggleSection(i) {
-    this.categorias[i].open = !this.categorias[i].open;
+    this.information.cursos[i].open = !this.information.cursos[i].open;
   }
 }

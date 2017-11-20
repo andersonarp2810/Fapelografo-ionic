@@ -16,14 +16,51 @@ export class DataServiceProvider {
   constructor(public http: Http) {
   }
 
-  getAvisos() {
-    return this.http.get('assets/data/avisos.json')
-      .map((response: Response) => response.json());
+  enviarAviso(session: string, userId: number, titulo: string, descricao: string, tipo: string, categoria: number, cursos: number[], disciplinas: number[]) {
+    return this.http.post(
+      "https://fapelografo.herokuapp.com/appfapelografo/mobile/send_mensagem/",
+      JSON.stringify({
+        session: session,
+        user_id: userId,
+        titulo: titulo,
+        descricao: descricao,
+        tipo: tipo,
+        categoria: categoria,
+        cursos: cursos,
+        disciplinas: disciplinas
+      })
+    );
   }
 
-  getCategorias() {
-    return this.http.get('assets/data/categorias.json')
-      .map((response: Response) => response.json());
+  login(login: string, password: string, session: string) {
+    return this.http.post(
+      "https://fapelografo.herokuapp.com/appfapelografo/mobile/login/",
+      JSON.stringify({
+        login: login,
+        password: password,
+        session: session
+      })
+    );
+  }
+
+  logout(session: string) {
+    return this.http.post(
+      "https://fapelografo.herokuapp.com/appfapelografo/mobile/logout/",
+      JSON.stringify({
+        session: session
+      })
+    );
+  }
+
+  getAvisos(disciplinaIds: number[], cursoIds: number[]) {
+    return this.http.post(
+      this.caminho,
+      JSON.stringify({
+        acao: "get_avisos",
+        curso_ids: cursoIds,
+        disciplina_ids: disciplinaIds
+      })
+    );
   }
 
   getInformation() {

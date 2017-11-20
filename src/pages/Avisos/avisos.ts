@@ -14,12 +14,22 @@ import { DataServiceProvider } from '../../providers/data-service';
 export class Avisos {
 
   avisos: any;
+  information: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public dados: DataServiceProvider) {
-    
-    this.dados.getAvisos()
+
+    this.dados.getInformation()
       .subscribe(
-      (data) => {
+      (response) => {
+        let data = response.json();
+        this.information = data;
+      }
+      );
+
+    this.dados.getAvisos([], [])
+      .subscribe(
+      (response) => {
+        let data = response.json();
         this.avisos = data;
         console.log(this.avisos);
       },
