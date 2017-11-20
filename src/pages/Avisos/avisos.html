@@ -8,17 +8,17 @@
 
     <!--http://ionicframework.com/docs/v2-->
 
-    <ion-list *ngIf="avisos != undefined && information != undefined">
+    <span *ngIf="avisos != undefined && information != undefined">
 
         <div *ngIf="avisos.calendario.length>0">
             <h3 class="c2">Calendário</h3>
             <div class="container-class">
                 <ion-scroll scrollX="true" scrollbar-x="false" scrollbar-y="false" class="listahorizontal">
-                    <ion-row nowrap>
-                        <ion-col col-20 *ngFor="let item of avisos.calendario">
+                    <ion-row class="linha" nowrap>
+                        <ion-col col-12 [style.background-image]="'url(' + information.url_imagem + item.imagem + ')'"
+                            class="coluna" col-20 *ngFor="let item of avisos.calendario">
                             <h2>{{item.titulo}}</h2>
                             <p>{{item.descricao}}</p>
-                            <img [src]="information.url_imagem + item.imagem">
                         </ion-col>
                     </ion-row>
                 </ion-scroll>
@@ -29,11 +29,11 @@
             <h3 class="c2">Gerais</h3>
             <div class="container-class">
                 <ion-scroll scrollX="true" scrollbar-x="false" scrollbar-y="false" class="listahorizontal">
-                    <ion-row nowrap>
-                        <ion-col col-20 *ngFor="let item of avisos.gerais">
-                            <h2>{{item.titulo}}</h2>
+                    <ion-row class="linha" nowrap>
+                        <ion-col col-12 [style.background-image]="'url(' + information.url_imagem + item.imagem + ')'"
+                            class="coluna" *ngFor="let item of avisos.gerais">
+                            <h2 style="display: block">{{item.titulo}}</h2>
                             <p>{{item.descricao}}</p>
-                            <img [src]="information.url_imagem + item.imagem">
                         </ion-col>
                     </ion-row>
                 </ion-scroll>
@@ -44,8 +44,8 @@
             <h3 class="c2">Gerais</h3>
             <div class="container-class">
                 <ion-scroll scrollX="true" scrollbar-x="false" scrollbar-y="false" class="listahorizontal">
-                    <ion-row nowrap>
-                        <ion-col col-20 *ngFor="let item of avisos.avisos_cursos">
+                    <ion-row class="linha" nowrap>
+                        <ion-col class="coluna" *ngFor="let item of avisos.avisos_cursos">
                             <h2>{{item.titulo}}</h2>
                             <p>{{item.descricao}}</p>
                             <img [src]="url_imagem + item.imagem">
@@ -59,8 +59,8 @@
             <h3 class="c2">Gerais</h3>
             <div class="container-class">
                 <ion-scroll scrollX="true" scrollbar-x="false" scrollbar-y="false" class="listahorizontal">
-                    <ion-row nowrap>
-                        <ion-col col-20 *ngFor="let item of avisos.aviso_disciplinas">
+                    <ion-row class="linha" nowrap>
+                        <ion-col class="coluna" *ngFor="let item of avisos.aviso_disciplinas">
                             <h2>{{item.titulo}}</h2>
                             <p>{{item.descricao}}</p>
                             <img [src]="information.url_imagem + item.imagem">
@@ -70,6 +70,6 @@
             </div>
         </div>
 
-    </ion-list>
+    </span>
 
 </ion-content>
