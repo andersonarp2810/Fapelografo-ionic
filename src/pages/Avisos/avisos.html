@@ -1,5 +1,5 @@
 <ion-header>
-    <ion-navbar color="primary">
+    <ion-navbar color="um">
         <botao-menu>Avisos</botao-menu>
     </ion-navbar>
 </ion-header>
@@ -15,10 +15,8 @@
             <div class="container-class">
                 <ion-scroll scrollX="true" scrollbar-x="false" scrollbar-y="false" class="listahorizontal">
                     <ion-row class="linha" nowrap>
-                        <ion-col col-12 [style.background-image]="'url(' + information.url_imagem + item.imagem + ')'"
-                            class="coluna" col-20 *ngFor="let item of avisos.calendario">
+                        <ion-col (click)="verDetalhes(item)" col-12 [style.background-image]="'url(' + information.url_imagem + item.imagem + ')'" class="coluna" col-20 *ngFor="let item of avisos.calendario">
                             <h2>{{item.titulo}}</h2>
-                            <p>{{item.descricao}}</p>
                         </ion-col>
                     </ion-row>
                 </ion-scroll>
@@ -30,10 +28,9 @@
             <div class="container-class">
                 <ion-scroll scrollX="true" scrollbar-x="false" scrollbar-y="false" class="listahorizontal">
                     <ion-row class="linha" nowrap>
-                        <ion-col col-12 [style.background-image]="'url(' + information.url_imagem + item.imagem + ')'"
+                        <ion-col (click)="verDetalhes(item)" col-5 [style.background-image]="'url(' + information.url_imagem + item.imagem + ')'"
                             class="coluna" *ngFor="let item of avisos.gerais">
                             <h2 style="display: block">{{item.titulo}}</h2>
-                            <p>{{item.descricao}}</p>
                         </ion-col>
                     </ion-row>
                 </ion-scroll>
@@ -41,14 +38,12 @@
         </div>
 
         <div *ngIf="avisos.avisos_cursos.length>0">
-            <h3 class="c2">Gerais</h3>
+            <h3 class="c2">Cursos</h3>
             <div class="container-class">
                 <ion-scroll scrollX="true" scrollbar-x="false" scrollbar-y="false" class="listahorizontal">
                     <ion-row class="linha" nowrap>
-                        <ion-col class="coluna" *ngFor="let item of avisos.avisos_cursos">
+                        <ion-col (click)="verDetalhes(item)" col-5 class="coluna" [style.background-image]="'url(' + information.url_imagem + item.imagem + ')'" *ngFor="let item of avisos.avisos_cursos">
                             <h2>{{item.titulo}}</h2>
-                            <p>{{item.descricao}}</p>
-                            <img [src]="url_imagem + item.imagem">
                         </ion-col>
                     </ion-row>
                 </ion-scroll>
@@ -56,14 +51,12 @@
         </div>
 
         <div *ngIf="avisos.aviso_disciplinas.length>0">
-            <h3 class="c2">Gerais</h3>
+            <h3 class="c2">Disciplinas</h3>
             <div class="container-class">
                 <ion-scroll scrollX="true" scrollbar-x="false" scrollbar-y="false" class="listahorizontal">
                     <ion-row class="linha" nowrap>
-                        <ion-col class="coluna" *ngFor="let item of avisos.aviso_disciplinas">
+                        <ion-col (click)="verDetalhes(item)" col-5 class="coluna" [style.background-image]="'url(' + information.url_imagem + item.imagem + ')'" *ngFor="let item of avisos.aviso_disciplinas">
                             <h2>{{item.titulo}}</h2>
-                            <p>{{item.descricao}}</p>
-                            <img [src]="information.url_imagem + item.imagem">
                         </ion-col>
                     </ion-row>
                 </ion-scroll>

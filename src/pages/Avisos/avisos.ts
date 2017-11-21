@@ -14,7 +14,7 @@ import { DataServiceProvider } from '../../providers/data-service';
 export class Avisos {
 
   avisos: any;
-  information: string;
+  information: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public dados: DataServiceProvider) {
 
@@ -26,7 +26,16 @@ export class Avisos {
       }
       );
 
-    this.dados.getAvisos([], [])
+
+    let cursos: number[] = [];
+    let disciplinas: number[] = [];
+    if (navParams.data.cursos != undefined) {
+      cursos = navParams.data.cursos;
+    }
+    if (navParams.data.disciplinas != undefined) {
+      disciplinas = navParams.data.disciplinas;
+    }
+    this.dados.getAvisos(disciplinas, cursos)
       .subscribe(
       (response) => {
         let data = response.json();
@@ -41,9 +50,12 @@ export class Avisos {
       }
       );
 
-    console.log(navParams);
   }
 
 
+  verDetalhes(aviso) {
+    aviso.caminho = this.information.url_imagem;
+    this.navCtrl.push('Detalhes', aviso);
+  }
 
 }

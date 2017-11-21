@@ -1,7 +1,7 @@
 page-avisos {	
 	.coluna{
 		padding: 16px;
-		border: solid 1px #DDD;
+		border: solid 1px #3C13af;
 		color: #FFF;
 		text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 		border-radius: 3px;
@@ -9,7 +9,7 @@ page-avisos {
 		box-shadow: 0px 10px 15px 0px rgba(0,0,0,0.75);
 		background-repeat: no-repeat;
 		background-position: center;
-		background-size: 100%;
+		background-size: contain;
 		//height: inherit !important;
 	}	
 	.linha{
@@ -17,8 +17,11 @@ page-avisos {
 		height: 25vh;
 	}
 	.col{
-		max-width: none !important;
-		width: 100vw !important;
+		//max-width: none !important;
+		white-space: normal;
+		//overflow: hidden;
+		overflow: scroll;
+		text-align: center;
 	}
 
 }

@@ -30,8 +30,19 @@ export class Pesquisa {
 
     this.dataService.getInformation()
       .subscribe((response) => {
-        let data = response.json();
-        this.information = data;
+        console.log(response);
+        let dados = response.json();
+        console.log(dados);
+        dados.cursos.map((curso) => {
+          curso['check'] = false;
+          curso.disciplinas.map((disciplina) => {
+            disciplina['check'] = false;
+            return disciplina;
+          });
+          return curso;
+        });
+        this.information = dados;
+        console.log(this.information);
         load.dismiss();
       },
       (erro) => {
@@ -48,11 +59,43 @@ export class Pesquisa {
     console.log('ionViewDidLoad Pesquisa');
   }
 
+  check(curso) {
+    console.log(curso);
+    curso.disciplinas.map((disciplina) => {
+      disciplina.check = curso.check;
+      return disciplina;
+    });
+  }
+
+  checkChild(curso, child) {
+    console.log(child);
+    if (child.check) {
+      curso.check = true;
+    }
+    else {
+      let todos = false;
+      for (let i = 0; i < curso.disciplinas.length; i++) {
+        if (curso.disciplinas[i].check) {
+          todos = true;
+          break;
+        }
+      }
+      curso.check = todos;
+    }
+  }
+
   filtrar() {
     let pesquisa = {
-      escolha: this.escolha,
-      tipo: this.tipo
+      cursos: [],
+      disciplinas: []
     };
+    console.log(this.information);
+    this.information.cursos.forEach(curso => {
+      if (curso.check) pesquisa.cursos.push(curso.id);
+      curso.disciplinas.forEach(disc => {
+        if (disc.check) pesquisa.disciplinas.push(disc.id);
+      });
+    });
     console.log(pesquisa);
     this.navCtrl.setRoot('Avisos', pesquisa);
   }

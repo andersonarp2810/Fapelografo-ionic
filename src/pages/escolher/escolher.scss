@@ -7,24 +7,24 @@ page-escolher {
     }
 
     .accordion-list {
-        //background: color($colors, light);
+        //background: color($colors, dois);
         height: 100%;
     }
  
     .child {
-        background: #e8e7e6;
+        background: color($colors, dois);
         color: #000;
         //margin-bottom: 4px;
     }
     .child-item {
-        background: #f3f2f1;
+        background: color($colors, dois);
         //padding: 10px;
     }
     .child-check{
-            background: #f3f2f1;
+            background: color($colors, dois);
     }
     .child-row {
-        background: #f3f2f1;
+        background: color($colors, dois);
         padding: 10px;
     }
 

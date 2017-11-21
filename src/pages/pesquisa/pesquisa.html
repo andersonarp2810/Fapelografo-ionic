@@ -15,7 +15,7 @@
 
 <ion-content padding>
 
-  <ion-list *ngIf="information!=undefined" class="accordion-list" radio-group [(ngModel)]="escolha">
+  <ion-list *ngIf="information!=undefined" class="accordion-list">
 
     <!-- First Level -->
     <ion-list-header text-wrap *ngFor="let curso of information.cursos; let i = index" no-lines no-padding no-margin>
@@ -29,8 +29,8 @@
           </button>
         </ion-col>
         <ion-col col-3 no-padding class="flex">
-          <ion-item (click)="tipo = 'curso'" >
-            <ion-radio [id]="curso.nome" [value]="curso.id"></ion-radio>
+          <ion-item (click)="tipo = 'curso'">
+            <ion-checkbox [(ngModel)]="curso.check" (ngModelChange)="check(curso)"></ion-checkbox>
           </ion-item>
         </ion-col>
       </ion-row>
@@ -46,8 +46,8 @@
               </ion-item>
             </ion-col>
             <ion-col class="flex" col-3>
-              <ion-item (click)="tipo = 'disciplina'" class="child-check">
-                <ion-radio [id]="disciplina.nome" [value]="disciplina.id"></ion-radio>
+              <ion-item class="child-check">
+                <ion-checkbox [(ngModel)]="disciplina.check" (ngModelChange)="checkChild(curso, disciplina)"></ion-checkbox>
               </ion-item>
             </ion-col>
           </ion-row>
@@ -59,7 +59,7 @@
   </ion-list>
 
   <ion-fab bottom right>
-    <button ion-fab color="primary" [disabled]="escolha==undefined" (click)="filtrar(tipo)">
+    <button ion-fab color="primary" (click)="filtrar()">
       <ion-icon name="search"></ion-icon>
     </button>
   </ion-fab>

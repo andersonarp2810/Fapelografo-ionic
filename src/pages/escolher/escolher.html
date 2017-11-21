@@ -20,7 +20,8 @@
 
   <ion-list *ngIf="information!=undefined" class="accordion-list">
     <!-- First Level -->
-    <ion-list-header text-wrap *ngFor="let curso of information.cursos; let i = index" no-lines no-padding no-margin>
+    <ion-list-header class="fundoazul" color="dois" text-wrap *ngFor="let curso of information.cursos; let i = index" no-lines no-padding
+      no-margin>
       <!-- Toggle Button -->
       <ion-row>
         <ion-col col-9 no-padding>

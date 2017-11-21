@@ -16,7 +16,10 @@ import { NavController, NavParams, IonicPage } from 'ionic-angular';
 })
 export class Detalhes {
 
+  aviso: any;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.aviso = navParams.data;
   }
 
   ionViewDidLoad() {

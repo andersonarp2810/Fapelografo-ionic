@@ -15,4 +15,26 @@
 
 <ion-content padding>
 
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <h2>
+          {{aviso.titulo}}
+        </h2>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <p>
+          {{aviso.descricao}}
+        </p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <img [src]="aviso.caminho + aviso.imagem">
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
 </ion-content>
