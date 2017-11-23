@@ -1,6 +1,13 @@
 <ion-header>
     <ion-navbar color="um">
-        <botao-menu>Avisos</botao-menu>
+        <botao-menu>
+            Avisos
+        </botao-menu>
+        <ion-buttons end>
+            <button ion-button icon-only (click)="navCtrl.setRoot('Pesquisa')">
+                <ion-icon name="search" item-right></ion-icon>
+            </button>
+        </ion-buttons>
     </ion-navbar>
 </ion-header>
 

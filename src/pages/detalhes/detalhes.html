@@ -25,14 +25,14 @@
     </ion-row>
     <ion-row>
       <ion-col>
-        <p>
-          {{aviso.descricao}}
-        </p>
+        <img [src]="aviso.caminho + aviso.imagem">
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col>
-        <img [src]="aviso.caminho + aviso.imagem">
+        <p>
+          {{aviso.descricao}}
+        </p>
       </ion-col>
     </ion-row>
   </ion-grid>

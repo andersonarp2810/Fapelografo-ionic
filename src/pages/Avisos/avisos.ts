@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, IonicPage } from 'ionic-angular';
+import { AlertController, LoadingController, NavController, NavParams, IonicPage } from 'ionic-angular';
 import { DataServiceProvider } from '../../providers/data-service';
 
 @IonicPage()
@@ -16,13 +16,27 @@ export class Avisos {
   avisos: any;
   information: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public dados: DataServiceProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public dados: DataServiceProvider, public loader: LoadingController, public alerter: AlertController) {
+
+    let load = this.loader.create({
+      content: 'Conectando'
+    });
+    load.present();
+
+    let alerta = this.alerter.create({
+      message: 'Erro de conexão'
+    });
 
     this.dados.getInformation()
       .subscribe(
       (response) => {
         let data = response.json();
         this.information = data;
+      },
+      (erro) => {
+        console.error(erro);
+        load.dismiss();
+        alerta.present();
       }
       );
 
@@ -41,9 +55,12 @@ export class Avisos {
         let data = response.json();
         this.avisos = data;
         console.log(this.avisos);
+        load.dismiss();
       },
       (erro) => {
         console.error(erro);
+        load.dismiss();
+        alerta.present();
       },
       () => {
         console.log("completo");
