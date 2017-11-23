@@ -6,7 +6,7 @@
 -->
 <ion-header>
 
-  <ion-navbar color="primary">
+  <ion-navbar color="um">
     <botao-menu *ngIf="!primeiravez">Escolher Disciplinas</botao-menu>
     <ion-title [hidden]="!primeiravez" style="text-transform: none !important;">Disciplinas</ion-title>
   </ion-navbar>
@@ -20,12 +20,11 @@
 
   <ion-list *ngIf="information!=undefined" class="accordion-list">
     <!-- First Level -->
-    <ion-list-header class="fundoazul" color="dois" text-wrap *ngFor="let curso of information.cursos; let i = index" no-lines no-padding
-      no-margin>
+    <ion-list-header color="um" text-wrap *ngFor="let curso of information.cursos; let i = index" no-lines no-padding no-margin>
       <!-- Toggle Button -->
       <ion-row>
         <ion-col col-9 no-padding>
-          <button class="label" ion-item (click)="toggleSection(i)" detail-none>
+          <button class="label fundoazul" ion-item (click)="toggleSection(i)" detail-none>
             <ion-icon item-left name="arrow-forward" *ngIf="!curso.open"></ion-icon>
             <ion-icon item-left name="arrow-down" *ngIf="curso.open"></ion-icon>
             <span style="font-size:medium">{{ curso.nome }}</span>

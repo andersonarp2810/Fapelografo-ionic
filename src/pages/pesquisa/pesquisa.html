@@ -6,7 +6,7 @@
 -->
 <ion-header>
 
-  <ion-navbar color="primary">
+  <ion-navbar color="um">
     <botao-menu>Pesquisa e Filtros</botao-menu>
   </ion-navbar>
 
@@ -22,7 +22,7 @@
       <!-- Toggle Button -->
       <ion-row>
         <ion-col col-9 no-padding>
-          <button class="label" ion-item (click)="toggleSection(i)" detail-none>
+          <button class="label fundoazul" ion-item (click)="toggleSection(i)" detail-none>
             <ion-icon item-left name="arrow-forward" *ngIf="!curso.open"></ion-icon>
             <ion-icon item-left name="arrow-down" *ngIf="curso.open"></ion-icon>
             <span style="font-size:medium">{{ curso.nome }}</span>

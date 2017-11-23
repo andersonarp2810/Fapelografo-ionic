@@ -15,14 +15,75 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
+ion-label{
+    color: white !important;
+}
+
 ion-input{
-    border-bottom: ridge
+    color: white;
 }
 
 .scroll-content{
-    background-color: #3C13af;
+    background-color: color($colors, quatro);
 }
 
+.item-md{
+    background-color: color($colors, quatro);
+}
+
+
+.accordion-list {
+    //background: color($colors, dois);
+    height: 100%;
+    ion-list-header{
+        border-color: color($colors, dois);
+    }
+}
+
+.child {
+    background: color($colors, tres);
+    color: #fff;
+    //margin-bottom: 4px;
+}
+.child-item {
+    background: color($colors, tres);
+    color: #fff;
+    //padding: 10px;
+}
+.child-check{
+        background: color($colors, tres);
+}
+.child-row {
+    background: color($colors, tres);
+    color: #fff;
+    padding: 10px;
+}
+
+.flex{
+    display: flex !important;
+}
 .fundoazul{
-    background: #3C13af !important;
+    background: color($colors, quatro) !important;
+    color: #fff;
+}
+
+.fundocinza{
+    background: color($colors, grey) !important;
+    color: #fff;
+}
+
+.fundovermelho{
+    background: color($colors, danger) !important;
+    color: #fff;
+}
+
+.label {
+    margin: 0px;
+}
+.list {
+    margin-bottom: 4px;
+}
+.first-item{
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
 }

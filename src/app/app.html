@@ -1,16 +1,16 @@
 <ion-menu [content]="content" id="unauthenticated">
   <ion-header>
-    <ion-toolbar color="primary">
+    <ion-toolbar color="um">
       <ion-title>Menu</ion-title>
     </ion-toolbar>
   </ion-header>
 
   <ion-content>
     <ion-list>
-      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)" color="quatro">
         {{p.title}}
       </button>
-      <button menuClose ion-item *ngFor="let p of login" (click)="openPage(p)">
+      <button menuClose ion-item *ngFor="let p of login" (click)="openPage(p)" color="quatro">
         {{p.title}}
       </button>
     </ion-list>
@@ -20,20 +20,20 @@
 
 <ion-menu [content]="content" id="authenticated">
   <ion-header>
-    <ion-toolbar color="primary">
+    <ion-toolbar color="um">
       <ion-title>Menu</ion-title>
     </ion-toolbar>
   </ion-header>
 
   <ion-content>
     <ion-list>
-      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)" color="quatro">
         {{p.title}}
       </button>
-      <button menuClose ion-item *ngFor="let p of prof" (click)="openPage(p)" color="grey">
+      <button menuClose ion-item *ngFor="let p of prof" (click)="openPage(p)" class="fundocinza">
         {{p.title}}
       </button>
-      <button menuClose ion-item (click)="logout()" color="danger">
+      <button menuClose ion-item (click)="logout()" class="fundovermelho">
         Sair
       </button>
     </ion-list>

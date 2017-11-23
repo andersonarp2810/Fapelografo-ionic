@@ -1,15 +1,16 @@
 page-avisos {	
 	.coluna{
 		padding: 16px;
-		border: solid 1px #3C13af;
+		//border: solid 1px color($colors, dois);
 		color: #FFF;
 		text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 		border-radius: 3px;
-		margin: 5px;
-		box-shadow: 0px 10px 15px 0px rgba(0,0,0,0.75);
+		margin: 2px;
+		//box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.75);
 		background-repeat: no-repeat;
 		background-position: center;
-		background-size: contain;
+		background-size: 100% 100%;
+		//background-color: white;
 		//height: inherit !important;
 	}	
 	.linha{
@@ -22,6 +23,16 @@ page-avisos {
 		//overflow: hidden;
 		overflow: scroll;
 		text-align: center;
+	}
+	.cima{
+		background-color: color($colors, um);
+		padding-left: 16px;
+		padding-right: 16px;
+		padding-bottom: 1px;
+
+	}
+	.header-md::after{
+		height: 0px;
 	}
 
 }
@@ -58,7 +69,7 @@ page-avisos {
 	//border-style: ridge;
 	//border-color: darkolivegreen;
 	width: fit-content;
-	//color: white;
+	color: white;
 	//background-color: darkolivegreen;
 	padding: 5px;
 	margin-bottom: 0px;
