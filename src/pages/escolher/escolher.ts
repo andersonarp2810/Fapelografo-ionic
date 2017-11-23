@@ -128,7 +128,7 @@ export class Escolher {
     });
     this.storage.set('escolhas', this.escolhas);
     console.log(this.escolhas);
-    this.navCtrl.setRoot('Avisos');
+    this.navCtrl.setRoot('Avisos', this.escolhas);
   }
 
   limpar() {
