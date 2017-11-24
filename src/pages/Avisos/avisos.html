@@ -18,8 +18,8 @@
 
     <span *ngIf="avisos != undefined && information != undefined">
         <div class="cima">
-            <h6 class="c2">Calendário</h6>
             <div *ngIf="avisos.calendario.length>0">
+                <h6 class="c2">Calendário</h6>
                 <div class="container-class">
                     <ion-row style="height: 25vh" nowrap>
                         <ion-col (click)="verDetalhes(item)" col-12 [style.background-image]="'url(' + information.url_imagem + item.imagem + ')'"
@@ -32,8 +32,8 @@
         </div>
 
         <div padding>
-            <h6 class="c2">Gerais</h6>
             <div *ngIf="avisos.gerais.length>0">
+                <h6 class="c2">Gerais</h6>
                 <div class="container-class">
                     <ion-scroll scrollX="true" scrollbar-x="false" scrollbar-y="false" class="listahorizontal">
                         <ion-row class="linha" nowrap>
@@ -46,18 +46,8 @@
                 </div>
             </div>
 
-            <h6 class="c2">Cursos</h6>
-            <div *ngIf="avisos.avisos_cursos.length==0">
-                <div class="container-class">
-                    <ion-scroll scrollX="true" scrollbar-x="false" scrollbar-y="false" class="listahorizontal">
-                        <ion-row class="linha" nowrap>
-                            <ion-col col-4 class="coluna">
-                            </ion-col>
-                        </ion-row>
-                    </ion-scroll>
-                </div>
-            </div>
             <div *ngIf="avisos.avisos_cursos.length>0">
+                <h6 class="c2">Cursos</h6>
                 <div class="container-class">
                     <ion-scroll scrollX="true" scrollbar-x="false" scrollbar-y="false" class="listahorizontal">
                         <ion-row class="linha" nowrap>
@@ -70,23 +60,27 @@
                 </div>
             </div>
 
-            <h6 class="c2">Disciplinas</h6>
-            <div *ngIf="avisos.aviso_disciplinas.length==0">
-                <div class="container-class">
-                    <ion-scroll scrollX="true" scrollbar-x="false" scrollbar-y="false" class="listahorizontal">
-                        <ion-row class="linha" nowrap>
-                            <ion-col col-4 class="coluna">
-                            </ion-col>
-                        </ion-row>
-                    </ion-scroll>
-                </div>
-            </div>
             <div *ngIf="avisos.aviso_disciplinas.length>0">
+                <h6 class="c2">Disciplinas</h6>
                 <div class="container-class">
                     <ion-scroll scrollX="true" scrollbar-x="false" scrollbar-y="false" class="listahorizontal">
                         <ion-row class="linha" nowrap>
                             <ion-col (click)="verDetalhes(item)" col-4 class="coluna" [style.background-image]="'url(' + information.url_imagem + item.imagem + ')'"
                                 *ngFor="let item of avisos.aviso_disciplinas">
+
+                            </ion-col>
+                        </ion-row>
+                    </ion-scroll>
+                </div>
+            </div>
+
+            <div *ngIf="avisos.aviso_professor.length>0">
+                <h6 class="c2">De Professores</h6>
+                <div class="container-class">
+                    <ion-scroll scrollX="true" scrollbar-x="false" scrollbar-y="false" class="listahorizontal">
+                        <ion-row class="linha" nowrap>
+                            <ion-col (click)="verDetalhes(item)" col-4 class="coluna" [style.background-image]="'url(' + information.url_imagem + item.imagem + ')'"
+                                *ngFor="let item of avisos.aviso_professor">
 
                             </ion-col>
                         </ion-row>

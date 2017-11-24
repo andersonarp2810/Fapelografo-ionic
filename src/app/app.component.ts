@@ -1,7 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
-import { LoadingController, MenuController, Nav, Platform } from 'ionic-angular';
+import { AlertController, LoadingController, MenuController, Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { Storage } from '@ionic/storage';
+import { DataServiceProvider } from '../providers/data-service';
 
 @Component({
   templateUrl: 'app.html',
@@ -15,7 +17,7 @@ export class MyApp {
   login: Array<{ title: string, component: string }>;
   prof: Array<{ title: string, component: string }>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public menu: MenuController, public loading: LoadingController) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public menu: MenuController, public loading: LoadingController, private alerter: AlertController, private storage: Storage, private dataService: DataServiceProvider) {
     this.initializeApp();
     this.menu.enable(false, 'unauthenticated');
     this.menu.enable(false, 'authenticated');
@@ -30,12 +32,24 @@ export class MyApp {
     this.login = [
       { title: 'Login', component: "Login" },
       { title: 'Esqueci minha senha', component: "Recuperar" }
-    ]
+    ];
     this.prof = [
       { title: 'Área do Professor', component: "AreaProfessor" },
       { title: 'Enviar aviso', component: "Enviar" },
       { title: 'Alterar senha', component: "Alterar" }
     ];
+
+    this.storage.get('sessao')
+      .then(
+      (dados) => {
+        console.log(dados);
+        console.log("tem sessao");
+        this.logado();
+      },
+      (erro) => {
+        console.error(erro);
+      }
+      );
 
   }
 
@@ -49,18 +63,48 @@ export class MyApp {
     });
   }
 
+  logado(){
+    this.menu.enable(false, 'unauthenticated');
+    this.menu.enable(true, 'authenticated');
+  }
+
   logout() {
     let load = this.loading.create({
       content: 'Saindo...'
     });
     load.present();
 
-    setTimeout(() => {
-      this.nav.setRoot("Login");
-      this.menu.enable(true, 'unauthenticated');
-      this.menu.enable(false, 'authenticated');
-      load.dismiss();
-    }, 333);
+    this.storage.get('sessao')
+      .then(
+      (dados) => {
+        console.log(dados);
+        this.dataService.logout(dados.session)
+          .subscribe(
+          (dados) => {
+            console.log(dados);
+            this.nav.setRoot("Login");
+            this.menu.enable(true, 'unauthenticated');
+            this.menu.enable(false, 'authenticated');
+            this.storage.remove('sessao');
+          },
+          (erro) => {
+            console.error(erro);
+            let alerta = this.alerter.create({
+              message: 'Erro de conexão'
+            });
+            alerta.present();
+          },
+          () => {
+            load.dismiss();
+          }
+          );
+      },
+      (erro) => {
+        console.error(erro);
+
+      }
+      );
+
   }
 
   openPage(page) {

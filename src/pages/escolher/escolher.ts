@@ -3,6 +3,7 @@ import { AlertController, LoadingController, MenuController, NavController, NavP
 import { DataServiceProvider } from '../../providers/data-service';
 import { Storage } from '@ionic/storage';
 import 'rxjs/add/operator/map';
+import { Tostador } from '../../providers/tostador';
 
 
 /**
@@ -19,6 +20,7 @@ import 'rxjs/add/operator/map';
   templateUrl: 'escolher.html',
   providers: [
     DataServiceProvider,
+    Tostador
   ]
 })
 export class Escolher {
@@ -28,15 +30,27 @@ export class Escolher {
     disciplinas: []
   };
   information: any;
+  load: any;
   primeiravez: boolean = true;
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public dataService: DataServiceProvider, private storage: Storage, private menu: MenuController, private loader: LoadingController, private alerter: AlertController) {
 
-    let load = this.loader.create({
+    this.load = this.loader.create({
       content: 'Conectando...'
     });
-    load.present();
+    this.load.present();
+
+    this.buscaSessao();
+
+  }
+
+  ionViewDidLoad() {
+    console.log('ai dento');
+  }
+
+
+  buscarEscolha() {
     this.storage.get('escolhas')
       .then((dados) => {
         console.log("dados");
@@ -52,11 +66,15 @@ export class Escolher {
           this.escolhas = dados;
           this.menu.enable(true, 'unauthenticated');
         }
+        this.buscarInformacao();
       },
       (erro) => {
         console.error(erro);
       });
 
+  }
+
+  buscarInformacao() {
     this.dataService.getInformation()
       .subscribe((response: any) => {
         console.log(response);
@@ -72,21 +90,33 @@ export class Escolher {
         });
         this.information = dados;
         console.log(this.information);
-        load.dismiss();
+        this.load.dismiss();
       },
       (erro) => {
         console.error(erro);
-        load.dismiss();
+        this.load.dismiss();
         let alerta = this.alerter.create({
           title: 'Erro de conexão'
         });
         alerta.present();
       });
-
   }
 
-  ionViewDidLoad() {
-    console.log('ai dento');
+  buscaSessao() {
+    this.storage.get('sessao')
+      .then(
+      (dados) => {
+        console.log(dados);
+        console.log("tem sessao");
+        this.menu.enable(false, 'unauthenticated');
+        this.menu.enable(true, 'authenticated');
+        this.buscarEscolha();
+      },
+      (erro) => {
+        console.error(erro);
+        this.buscarEscolha();
+      }
+      );
   }
 
   check(curso) {
@@ -128,7 +158,7 @@ export class Escolher {
     });
     this.storage.set('escolhas', this.escolhas);
     console.log(this.escolhas);
-    this.navCtrl.setRoot('Avisos', this.escolhas);
+    this.navCtrl.setRoot('Avisos');
   }
 
   limpar() {

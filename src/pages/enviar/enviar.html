@@ -15,18 +15,68 @@
 
 <ion-content padding>
 
+
+  <ion-list *ngIf="information!=undefined" class="accordion-list" style="height: min-content">
+
+    <!-- First Level -->
+    <ion-list-header text-wrap *ngFor="let curso of information.cursos; let i = index" no-lines no-padding no-margin>
+      <!-- Toggle Button -->
+      <ion-row>
+        <ion-col col-9 no-padding>
+          <button class="label fundoazul" ion-item (click)="toggleSection(i)" detail-none>
+            <ion-icon item-left name="arrow-forward" *ngIf="!curso.open"></ion-icon>
+            <ion-icon item-left name="arrow-down" *ngIf="curso.open"></ion-icon>
+            <span style="font-size:medium">{{ curso.nome }}</span>
+          </button>
+        </ion-col>
+        <ion-col col-3 no-padding class="flex">
+          <ion-item (click)="tipo = 'curso'">
+            <ion-checkbox [(ngModel)]="curso.check" (ngModelChange)="check(curso)"></ion-checkbox>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-list *ngIf="curso.disciplinas && curso.open" no-lines>
+
+        <ion-list-header *ngFor="let disciplina of curso.disciplinas; let j = index" class="first-item" no-padding>
+
+          <ion-row class="child-row">
+            <ion-col>
+              <ion-item ion-item detail-none class="child-item" text-wrap>
+                <h2>{{ disciplina.nome }}</h2>
+              </ion-item>
+            </ion-col>
+            <ion-col class="flex" col-3>
+              <ion-item class="child-check">
+                <ion-checkbox [(ngModel)]="disciplina.check" (ngModelChange)="checkChild(curso, disciplina)"></ion-checkbox>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+
+        </ion-list-header>
+      </ion-list>
+
+    </ion-list-header>
+  </ion-list>
+
   <form name="formu" id="formu" (ngSubmit)="enviar()" [formGroup]="form">
 
     <div class="form-group">
       <ion-item>
-        <ion-label floating>Disciplina(s)</ion-label>
-        <ion-select multiple="true" id="disciplina" name="disciplina" [(ngModel)]="disciplina" formControlName="disciplina" [formGroup]="form"
-          (ngModelChange)="disciplinaChange($event)" cancelText="Cancelar" required>
-          <ion-option value="um">Um</ion-option>
-          <ion-option value="dois">Dois</ion-option>
-          <ion-option value="tres">Tres</ion-option>
-          <ion-option value="cuatro">Cuatro</ion-option>
+        <ion-label floating>Tipo</ion-label>
+        <ion-select multiple="false" id="tipo" name="tipo" [(ngModel)]="tipo" formControlName="tipo" [formGroup]="form" cancelText="Cancelar"
+          required>
+          <ion-option value="1">Cursos</ion-option>
+          <ion-option value="2">Disciplinas</ion-option>
         </ion-select>
+      </ion-item>
+    </div>
+
+    <div class="form-group">
+      <ion-item>
+        <ion-label floating>Título</ion-label>
+        <ion-input class="form-control" id="titulo" name="titulo" [(ngModel)]="titulo" formControlName="titulo" [formGroup]="form"
+          required></ion-input>
       </ion-item>
     </div>
 

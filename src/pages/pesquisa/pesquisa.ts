@@ -19,7 +19,6 @@ export class Pesquisa {
 
   escolha: any;
   information: any;
-  tipo: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public dataService: DataServiceProvider, private loader: LoadingController, private alerter: AlertController) {
 
