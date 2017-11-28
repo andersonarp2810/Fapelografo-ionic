@@ -37,7 +37,7 @@
                 <div class="container-class">
                     <ion-scroll scrollX="true" scrollbar-x="false" scrollbar-y="false" class="listahorizontal">
                         <ion-row class="linha" nowrap>
-                            <ion-col (click)="verDetalhes(item)" col-4 [style.background-image]="'url(' + information.url_imagem + item.imagem + ')'"
+                            <ion-col (click)="verDetalhes(item)" col-7 [style.background-image]="'url(' + information.url_imagem + item.imagem + ')'"
                                 class="coluna" *ngFor="let item of avisos.gerais">
 
                             </ion-col>
@@ -51,7 +51,7 @@
                 <div class="container-class">
                     <ion-scroll scrollX="true" scrollbar-x="false" scrollbar-y="false" class="listahorizontal">
                         <ion-row class="linha" nowrap>
-                            <ion-col (click)="verDetalhes(item)" col-4 class="coluna" [style.background-image]="'url(' + information.url_imagem + item.imagem + ')'"
+                            <ion-col (click)="verDetalhes(item)" col-7 class="coluna" [style.background-image]="'url(' + information.url_imagem + item.imagem + ')'"
                                 *ngFor="let item of avisos.avisos_cursos">
 
                             </ion-col>
@@ -65,7 +65,7 @@
                 <div class="container-class">
                     <ion-scroll scrollX="true" scrollbar-x="false" scrollbar-y="false" class="listahorizontal">
                         <ion-row class="linha" nowrap>
-                            <ion-col (click)="verDetalhes(item)" col-4 class="coluna" [style.background-image]="'url(' + information.url_imagem + item.imagem + ')'"
+                            <ion-col (click)="verDetalhes(item)" col-7 class="coluna" [style.background-image]="'url(' + information.url_imagem + item.imagem + ')'"
                                 *ngFor="let item of avisos.aviso_disciplinas">
 
                             </ion-col>
@@ -79,8 +79,9 @@
                 <div class="container-class">
                     <ion-scroll scrollX="true" scrollbar-x="false" scrollbar-y="false" class="listahorizontal">
                         <ion-row class="linha" nowrap>
-                            <ion-col (click)="verDetalhes(item)" col-4 class="coluna" [style.background-image]="'url(' + information.url_imagem + item.imagem + ')'"
-                                *ngFor="let item of avisos.aviso_professor">
+                            <ion-col (click)="verDetalhes(item)" col-7 class="coluna professor" *ngFor="let item of avisos.aviso_professor">
+                                <h6 text-nowrap>{{item.curso__nome}}</h6>
+                                <p>{{item.user__first_name}}</p>
 
                             </ion-col>
                         </ion-row>

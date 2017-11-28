@@ -2,5 +2,11 @@ page-detalhes {
     h2, p{
         color: white;
     }
+    ion-label{
+        border-width: 0px;
+        border-bottom: 1px;
+        border-color: white;
+        border-style: ridge
+    }
 
 }

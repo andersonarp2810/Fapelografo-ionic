@@ -35,6 +35,22 @@ page-avisos {
 		height: 0px;
 	}
 
+	.professor{
+		//box-shadow: inset 0px 0px 5px 3px rgba(0,0,0,0.75);
+		overflow: hidden;
+		background-image: url("/assets/pro.png");
+		//background-color: white;
+		text-align: right;
+        border-width: 0px;
+        border-bottom: 3px;
+		border-color: black;
+		border-style: ridge;
+	}
+
+	p{
+		color: white;
+	}
+
 }
 .listahorizontal{
     white-space: nowrap;

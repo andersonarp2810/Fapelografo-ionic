@@ -39,12 +39,14 @@ export class MyApp {
       { title: 'Alterar senha', component: "Alterar" }
     ];
 
-    this.storage.get('sessao')
+    this.storage.get('escolhas')
       .then(
       (dados) => {
         console.log(dados);
-        console.log("tem sessao");
-        this.logado();
+        if (dados != null) {
+          console.log("Nao é primeira vez");
+          this.nav.setRoot('Avisos');
+        }
       },
       (erro) => {
         console.error(erro);
@@ -63,10 +65,6 @@ export class MyApp {
     });
   }
 
-  logado(){
-    this.menu.enable(false, 'unauthenticated');
-    this.menu.enable(true, 'authenticated');
-  }
 
   logout() {
     let load = this.loading.create({

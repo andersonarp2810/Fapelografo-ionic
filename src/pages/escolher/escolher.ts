@@ -39,16 +39,9 @@ export class Escolher {
     this.load = this.loader.create({
       content: 'Conectando...'
     });
-    this.load.present();
 
-    this.buscaSessao();
 
   }
-
-  ionViewDidLoad() {
-    console.log('ai dento');
-  }
-
 
   buscarEscolha() {
     this.storage.get('escolhas')
@@ -58,13 +51,10 @@ export class Escolher {
         if (dados == null) {
           console.log('nao tem dados');
           this.primeiravez = true;
-          //this.menu.enable(false, 'unauthenticated');
-          //this.menu.enable(true, 'unauthenticated'); // pra pegar por enquanto
         } else {
           console.log('tem dados');
           this.primeiravez = false;
           this.escolhas = dados;
-          this.menu.enable(true, 'unauthenticated');
         }
         this.buscarInformacao();
       },
@@ -96,28 +86,12 @@ export class Escolher {
         console.error(erro);
         this.load.dismiss();
         let alerta = this.alerter.create({
-          title: 'Erro de conexão'
+          message: 'Erro de conexão'
         });
         alerta.present();
       });
   }
 
-  buscaSessao() {
-    this.storage.get('sessao')
-      .then(
-      (dados) => {
-        console.log(dados);
-        console.log("tem sessao");
-        this.menu.enable(false, 'unauthenticated');
-        this.menu.enable(true, 'authenticated');
-        this.buscarEscolha();
-      },
-      (erro) => {
-        console.error(erro);
-        this.buscarEscolha();
-      }
-      );
-  }
 
   check(curso) {
     console.log(curso);
@@ -142,6 +116,25 @@ export class Escolher {
       }
       curso.check = todos;
     }
+  }
+
+
+  ionViewDidLoad() {
+
+    this.storage.get('sessao')
+      .then(
+      (dados) => {
+        console.log(dados);
+        console.log("tem sessao");
+        this.menu.enable(false, 'unauthenticated');
+        this.menu.enable(true, 'authenticated');
+      },
+      (erro) => {
+        console.error(erro);
+      }
+      );
+    this.load.present();
+    this.buscarEscolha();
   }
 
   salvar() {

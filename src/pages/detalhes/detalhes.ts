@@ -17,9 +17,13 @@ import { NavController, NavParams, IonicPage } from 'ionic-angular';
 export class Detalhes {
 
   aviso: any;
+  links: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.aviso = navParams.data;
+    if(this.aviso.links != null){
+      this.links = this.aviso.links.split(';');
+    }
   }
 
   ionViewDidLoad() {

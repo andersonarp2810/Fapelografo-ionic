@@ -16,25 +16,45 @@
 <ion-content padding>
 
   <ion-grid>
+
     <ion-row>
       <ion-col>
+        <ion-label>Título</ion-label>
         <h2>
           {{aviso.titulo}}
         </h2>
       </ion-col>
     </ion-row>
-    <ion-row>
+
+    <ion-row *ngIf="aviso.imagem != undefined">
       <ion-col>
+        <ion-label>Imagem</ion-label>
         <img [src]="aviso.caminho + aviso.imagem">
       </ion-col>
     </ion-row>
+
     <ion-row>
       <ion-col>
+        <ion-label>Descrição</ion-label>
         <p>
           {{aviso.descricao}}
         </p>
       </ion-col>
     </ion-row>
+
+    <ion-row *ngIf="aviso.links != null">
+      <ion-col>
+        <ion-label>Links</ion-label>
+        <ion-row *ngFor="let link of links">
+          <ion-col>
+            <a [href]="link" target="blank">
+              {{link}}
+            </a>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+
   </ion-grid>
 
 </ion-content>

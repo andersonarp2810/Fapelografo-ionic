@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AlertController, LoadingController, NavController, NavParams, IonicPage } from 'ionic-angular';
+import { AlertController, LoadingController, MenuController, NavController, NavParams, IonicPage } from 'ionic-angular';
 import { DataServiceProvider } from '../../providers/data-service';
 import { Storage } from '@ionic/storage';
 
@@ -21,7 +21,7 @@ export class Avisos {
   information: any;
   load: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public dados: DataServiceProvider, public loader: LoadingController, public alerter: AlertController, private storage: Storage) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public dados: DataServiceProvider, public loader: LoadingController, public alerter: AlertController, private storage: Storage, private menu: MenuController) {
 
     console.log(this.navParams);
 
@@ -104,6 +104,24 @@ export class Avisos {
       }
       );
   }
+
+
+  ionViewDidLoad() {
+
+    this.storage.get('sessao')
+      .then(
+      (dados) => {
+        console.log(dados);
+        console.log("tem sessao");
+        this.menu.enable(false, 'unauthenticated');
+        this.menu.enable(true, 'authenticated');
+      },
+      (erro) => {
+        console.error(erro);
+      }
+      );
+  }
+
 
   verDetalhes(aviso) {
     aviso.caminho = this.information.url_imagem;
