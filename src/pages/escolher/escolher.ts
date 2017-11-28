@@ -125,9 +125,11 @@ export class Escolher {
       .then(
       (dados) => {
         console.log(dados);
-        console.log("tem sessao");
-        this.menu.enable(false, 'unauthenticated');
-        this.menu.enable(true, 'authenticated');
+        if (dados != null) {
+          console.log("tem sessao");
+          this.menu.enable(false, 'unauthenticated');
+          this.menu.enable(true, 'authenticated');
+        }
       },
       (erro) => {
         console.error(erro);
